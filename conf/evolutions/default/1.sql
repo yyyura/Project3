@@ -3,20 +3,19 @@
 
 # --- !Ups
 
-create table product (
+create table hole_test (
   id                            integer not null,
-  name                          varchar(255),
-  description                   varchar(255),
-  category                      varchar(255),
-  stock                         integer,
-  price                         double,
-  constraint pk_product primary key (id)
+  hole_number                   integer,
+  par                           integer,
+  diffindex                     integer,
+  score                         integer,
+  constraint pk_hole_test primary key (id)
 );
-create sequence product_seq;
+create sequence hole_test_seq;
 
 
 # --- !Downs
 
-drop table if exists product;
-drop sequence if exists product_seq;
+drop table if exists hole_test;
+drop sequence if exists hole_test_seq;
 

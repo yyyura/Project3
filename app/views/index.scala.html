@@ -1,16 +1,16 @@
-@(products: List[models.Product])
+@import models.golf.HoleTest
+@(products: List[HoleTest])
 
-    @main("Products Page") {
+    @main("List Of Holes") {
         <table class="table table-bordered table-hover table-condensed">
             <thead>
                     <!-- The header row-->
                 <tr>
                     <th>ID</th>
-                    <th>Name</th>
-                    <th>Description</th>
-                    <th>Category</th>
-                    <th>Stock</th>
-                    <th>Price</th>
+                    <th>Hole Number</th>
+                    <th>Par</th>
+                    <th>Index</th>
+                    <th>Score</th>
                 </tr>
             </thead>
             <tbody>
@@ -19,11 +19,10 @@
                     <tr>
                             <!-- Display each product field value in a column -->
                         <td>@p.id</td>
-                        <td>@p.name</td>
-                        <td>@p.description</td>
-                        <td>@p.category</td>
-                        <td>@p.stock</td>
-                        <td>@p.price</td>
+                        <td>@p.holeNumber</td>
+                        <td>@p.par</td>
+                        <td>@p.diffindex</td>
+                        <td>@p.score</td>
                     </tr>
                 }<!-- End of For loop -->
             </tbody>

@@ -1,10 +1,9 @@
 package controllers;
 
-import models.*;
+import models.golf.HoleTest;
 import play.mvc.*;
 import views.html.*;
 // Import required classes
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -21,10 +20,10 @@ public class HomeController extends Controller {
      */
     public Result index() {
 
-        //Get the list of products using Product.findAll()
-        List<Product> products_l = Product.findAll();
+        //Get the list of products using HoleTest.findAll()
+        List<HoleTest> products_l = HoleTest.findAll();
 
-        // Pass the list of products to the index view and render
+        // Pass the list of products to the diffindex view and render
         return ok(index.render(products_l));
     }
 }
