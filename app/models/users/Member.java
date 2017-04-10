@@ -24,8 +24,6 @@ public class Member extends User {
         this.numofrounds = numofrounds;
     }
 
-
-
     //Generic query helper for entity User with unique id String
     public static Model.Finder<String, Member> find = new Model.Finder<String, Member>(Member.class);
 
