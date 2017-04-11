@@ -1,30 +1,59 @@
 @import models.golf.HoleTest
 @(products: List[HoleTest])
 
-    @main("List Of Holes") {
-        <table class="table table-bordered table-hover table-condensed">
-            <thead>
-                    <!-- The header row-->
-                <tr>
-                    <th>ID</th>
-                    <th>Hole Number</th>
-                    <th>Par</th>
-                    <th>Index</th>
-                    <th>Score</th>
-                </tr>
-            </thead>
-            <tbody>
-                    <!-- Start of For loop - For each p in products add a row -->
-                @for(p <- products) {
-                    <tr>
-                            <!-- Display each product field value in a column -->
-                        <td>@p.id</td>
-                        <td>@p.holeNumber</td>
-                        <td>@p.par</td>
-                        <td>@p.diffindex</td>
-                        <td>@p.score</td>
-                    </tr>
-                }<!-- End of For loop -->
-            </tbody>
-        </table>
+    @main("index page") {
+        <div class="banner1">
+
+            <h1>Welcome to Golf Handicap</h1>
+
+            @*@if(user == null) {*@
+
+                @*<a href="/login"><i class="fa fa-sign-in fa-fw "></i>Login</a>*@
+                @*<a href="/register">Register<i class="fa fa-pencil fa-fw"></i></a>*@
+
+            @*}*@
+            @**@
+
+
+            <h3>About this Game</h3>
+            <p>
+                FootballManager is a FREE online football simulator for dozens of players around world.
+                Once in, you take charge of your own team, buy and sell players,
+                train your players to improve in the areas you wish to focus on, play matches and ultimately win the league.
+            </p>
+            <p>
+                FootballManager is the most action-packed football manager game of them all,
+                with 1 league match (and training sessions) per week. challenge anyone at anytime, express your management prowess and become the best.
+                From the above description the audience for this football simulator is intended for all genders and ages.
+                Join now, and check it out for yourself,
+                it doesn't cost a dime unless you want it to anyway, and you'll be up and playing in a couple of minutes!
+            </p>
+
+            <h4>Requirements to play Football Manager</h4>
+            <p>If you are reading this you are full capable of playing this amazing game!</p>
+
+            <h3>Rules of the game</h3>
+            <p>
+                By accessing FootballManager you agree to abide to the following rules.
+                Failure to abide to these rules can result in your account being deleted, suspended,
+                warned, or any other action that may be deemed appropriate.
+            </p>
+            <p>
+                These rules are in place as a guideline, if you carry out an action that is deemed to give you an unfair advantage we
+                will investigate this fully and appropriate consequences will be put in place.
+            </p>
+            <p>
+        <ul>
+            <li>You are only allowed to own ONE account on FootballManager regardless of which world it is in. </li>
+            <li>Do not login to another account other than your own.</li>
+            <li>Do not create an account with an abusive manager name.</li>
+            <li>Do not exploit any technical bugs to gain an advantage. If you spot a Technical Issue you should CONTACT US HERE!.</li>
+
+            <ul>
+                <li>Easy to get started</li>
+                <li>No pay-to-win features</li>
+                <li>Large active soccer community</li>
+            </ul>
+        </ul>
+        </div>
     }

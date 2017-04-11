@@ -5,10 +5,11 @@
 # An example controller showing a sample home page
 GET        /                    controllers.HomeController.index
 
-
+# Login
+#GET        /login               controllers.HomeController.loginC
 
 # Member
-GET        /member              controllers.MemberCtrl.indexC
+GET        /holes               controllers.MemberCtrl.holesC
 
 # Admin
 

@@ -2,7 +2,7 @@ package controllers;
 
 import models.golf.HoleTest;
 import play.mvc.*;
-import views.html.memberViews.indexMember;
+import views.html.memberViews.holesV;
 
 // Import required classes
 import java.util.List;
@@ -21,12 +21,12 @@ public class MemberCtrl extends Controller {
      * this method will be called when the application receives a
      * <code>GET</code> request with a path of <code>/</code>.
      */
-    public Result indexC() {
+    public Result holesC() {
 
         //Get the list of products using HoleTest.findAll()
         List<HoleTest> products_l = HoleTest.findAll();
 
         // Pass the list of products to the diffindex view and render
-        return ok(indexMember.render(products_l));
+        return ok(holesV.render(products_l));
     }
 }
