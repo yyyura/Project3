@@ -27,7 +27,7 @@ public class Member extends User {
     //Generic query helper for entity User with unique id String
     public static Model.Finder<String, Member> find = new Model.Finder<String, Member>(Member.class);
 
-    // Check if a user is logged in (by id - email address)
+    // Check if a user is logged in (by id - loginname)
     public static Member getLoggedIn(String id) {
         if (id == null)
             return null;

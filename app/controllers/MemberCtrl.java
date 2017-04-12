@@ -1,6 +1,7 @@
 package controllers;
 
 import controllers.security.Secured;
+import controllers.security.CheckIfMember;
 import models.golf.HoleTest;
 import models.users.User;
 import play.mvc.*;
@@ -24,7 +25,7 @@ public class MemberCtrl extends Controller {
      * <code>GET</code> request with a path of <code>/</code>.
      */
     @Security.Authenticated(Secured.class)
-//    @With(CheckIfMember.class)
+    @With(CheckIfMember.class)
     public Result holesC() {
 
         //Get the list of holes using HoleTest.findAll()
