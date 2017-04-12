@@ -1,6 +1,7 @@
 package controllers;
 
 import models.golf.HoleTest;
+import models.users.User;
 import play.mvc.*;
 import views.html.*;
 // Import required classes
@@ -19,11 +20,7 @@ public class HomeController extends Controller {
      * <code>GET</code> request with a path of <code>/</code>.
      */
     public Result index() {
+        return ok(index.render(User.getLoggedIn(session().get("loginname"))));
 
-        //Get the list of products using HoleTest.findAll()
-        List<HoleTest> products_l = HoleTest.findAll();
-
-        // Pass the list of products to the diffindex view and render
-        return ok(index.render(products_l));
     }
 }

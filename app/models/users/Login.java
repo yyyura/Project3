@@ -13,8 +13,9 @@ public class Login {
         // Call the static authenticate method in User
         if (User.authenticate(loginname, password) == null) {
             return "Invalid user or password";
+        } else {
+            return null;
         }
-        return null;
     }
 }
 

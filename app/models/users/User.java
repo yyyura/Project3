@@ -5,6 +5,8 @@ import javax.persistence.*;
 import play.data.validation.*;
 import com.avaje.ebean.*;
 
+import java.util.List;
+
 //https://www.playframework.com/documentation/2.2.x/JavaGuide4
 
 // Product entity managed by Ebean
@@ -50,6 +52,11 @@ public class User extends Model {
         this.password = password;
     }
 
+    public static List<User> findAll() {
+
+        return User.find.all();
+    }
+
 
     //Generic query helper for entity User with unique id String
     public static Finder<String, User> find = new Finder<String, User>(String.class, User.class);
@@ -61,14 +68,36 @@ public class User extends Model {
         return find.where().eq("loginname", loginname).eq("password", password).findUnique();
     }
 
-    // Check if a user is logged in (by id - email address)
-    public static User getLoggedIn(String id) {
-        if (id == null)
+    // Check if a user is logged in (by id - loginname)
+    public static User getLoggedIn(String loginname) {
+        if (loginname == null)
             return null;
         else
             // Find user by id and return object
-            return find.byId(id);
+            return find.where().eq("loginname", loginname).findUnique();
     }
+
+    public Long getid() {
+        return this.id;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+
+//    // Check if a user is logged in (by id - email address)
+//    public static User getLoggedIn(String id) {
+//        if (id == null)
+//            return null;
+//        else
+//            // Find user by id and return object
+//            return find.byId(id);
+//    }
 
     // Get the user type - from the discriminator value
     // http://stackoverflow.com/questions/3005383/how-to-get-the-discriminatorvalue-at-run-time
@@ -78,6 +107,24 @@ public class User extends Model {
         DiscriminatorValue val = this.getClass().getAnnotation(DiscriminatorValue.class);
         return val == null ? null : val.value();
     }
+
+    public String getName() {
+        return username;
+    }
+
+    public void setName(String name) {
+        this.username = name;
+    }
+
+    public String getLoginName() {
+        return loginname;
+    }
+
+    public void setLoginName(String loginName) {
+        this.loginname = loginName;
+
+    }
+
 
 }
 

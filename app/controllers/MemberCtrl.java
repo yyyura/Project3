@@ -1,6 +1,8 @@
 package controllers;
 
+import controllers.security.Secured;
 import models.golf.HoleTest;
+import models.users.User;
 import play.mvc.*;
 import views.html.memberViews.holesV;
 
@@ -21,12 +23,15 @@ public class MemberCtrl extends Controller {
      * this method will be called when the application receives a
      * <code>GET</code> request with a path of <code>/</code>.
      */
+    @Security.Authenticated(Secured.class)
+//    @With(CheckIfMember.class)
     public Result holesC() {
 
-        //Get the list of products using HoleTest.findAll()
-        List<HoleTest> products_l = HoleTest.findAll();
+        //Get the list of holes using HoleTest.findAll()
+        List<HoleTest> holes_l = HoleTest.findAll();
 
         // Pass the list of products to the diffindex view and render
-        return ok(holesV.render(products_l));
+//        return ok(holesV.render(holes_l));
+        return ok(holesV.render(User.getLoggedIn(session().get("loginname")), holes_l));
     }
 }
