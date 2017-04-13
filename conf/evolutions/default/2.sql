@@ -14,7 +14,7 @@ insert into hole_test (id,hole_number,par,diffindex,score) values ( 4,4,4,4,7 );
 
 
 
-insert into user (usertype,id,loginname,username,email,password,handicap,numofrounds) values ( 'admin',10,'admin','Alice Admin','admin@products.com','pass',0,0 );
-insert into user (usertype,id,loginname,username,email,password,handicap,numofrounds) values ( 'member',11,'yura','yura member','yura@products.com','pass',6.3,15 );
+insert into user (usertype,id,loginname,username,email,password,handicap,numofrounds) values ( 'admin',0,'admin','Alice Admin','admin@products.com','pass',0,0 );
+-- insert into user (usertype,id,loginname,username,email,password,handicap,numofrounds) values ( 'member',11,'yura','yura member','yura@products.com','pass',6.3,15 );
 
 
