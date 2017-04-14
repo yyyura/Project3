@@ -12,7 +12,7 @@ import javax.persistence.Id;
 import java.util.List;
 
 @Entity
-public class HoleTest extends Model {
+public class Hole extends Model {
 
     @Id
     public int id;
@@ -29,10 +29,10 @@ public class HoleTest extends Model {
     @Constraints.Required
     public int score;
 
-    public HoleTest() {
+    public Hole() {
     }
 
-    public HoleTest(int id, int holeNumber, int par, int diffindex, int score) {
+    public Hole(int id, int holeNumber, int par, int diffindex, int score) {
         this.id = id;
         this.holeNumber = holeNumber;
         this.par = par;
@@ -41,11 +41,11 @@ public class HoleTest extends Model {
     }
 
     //Generic query helper for entity Computer with id Long
-    public static Finder<Long, HoleTest> find = new Finder<Long, HoleTest>(Long.class, HoleTest.class);
+    public static Finder<Long, Hole> find = new Finder<Long, Hole>(Long.class, Hole.class);
 
     //Find all Products in the database
-    public static List<HoleTest> findAll() {
-        return HoleTest.find.all();
+    public static List<Hole> findAll() {
+        return Hole.find.all();
     }
 
 

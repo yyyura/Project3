@@ -1,6 +1,5 @@
-package models.Course;
+package models.golf;
 
-import models.Hole.HoleClass;
 /**
  * Created by awhit on 3/31/2017.
  */

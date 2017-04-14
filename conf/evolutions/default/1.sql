@@ -3,15 +3,15 @@
 
 # --- !Ups
 
-create table hole_test (
+create table hole (
   id                            integer not null,
   hole_number                   integer,
   par                           integer,
   diffindex                     integer,
   score                         integer,
-  constraint pk_hole_test primary key (id)
+  constraint pk_hole primary key (id)
 );
-create sequence hole_test_seq;
+create sequence hole_seq;
 
 create table user (
   usertype                      varchar(31) not null,
@@ -28,8 +28,8 @@ create table user (
 
 # --- !Downs
 
-drop table if exists hole_test;
-drop sequence if exists hole_test_seq;
+drop table if exists hole;
+drop sequence if exists hole_seq;
 
 drop table if exists user;
 

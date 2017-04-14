@@ -1,11 +1,10 @@
 package controllers;
 
-import models.golf.HoleTest;
 import models.users.User;
 import play.mvc.*;
 import views.html.*;
 // Import required classes
-import java.util.List;
+
 
 /**
  * This controller contains an action to handle HTTP requests

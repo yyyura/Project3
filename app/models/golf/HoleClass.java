@@ -1,4 +1,4 @@
-package models.Hole;
+package models.golf;
 
 /**
  * Created by awhit on 3/31/2017.

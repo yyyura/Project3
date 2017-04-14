@@ -2,7 +2,7 @@ package controllers;
 
 import controllers.security.Secured;
 import controllers.security.CheckIfMember;
-import models.golf.HoleTest;
+import models.golf.Hole;
 import models.users.User;
 import play.mvc.*;
 import views.html.memberViews.holesV;
@@ -29,7 +29,7 @@ public class MemberCtrl extends Controller {
     public Result holesC() {
 
         //Get the list of holes using HoleTest.findAll()
-        List<HoleTest> holes_l = HoleTest.findAll();
+        List<Hole> holes_l = Hole.findAll();
 
         // Pass the list of products to the diffindex view and render
 //        return ok(holesV.render(holes_l));

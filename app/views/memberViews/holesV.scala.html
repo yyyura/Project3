@@ -1,5 +1,4 @@
-@import models.golf.HoleTest
-@(user: models.users.User, holes: List[HoleTest])
+@(user: models.users.User, holes: List[models.golf.Hole])
 
     @main("List Of Holes", user) {
         <table class="table table-bordered table-hover table-condensed">
