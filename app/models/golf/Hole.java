@@ -9,6 +9,7 @@ import play.data.validation.Constraints;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import java.util.List;
 
 @Entity
@@ -29,8 +30,14 @@ public class Hole extends Model {
     @Constraints.Required
     private int score;
 
+    @ManyToOne
+    public Course course_o;
+
     public Hole() {
     }
+
+
+
 
     public Hole(int hID, int hNumber, int hPar, int diffIndex, int score) {
         this.hID = hID;
@@ -51,6 +58,12 @@ public class Hole extends Model {
 
 
     //Getters & Setters
+
+
+    public Long getCourseID() {
+        return course_o.getcID();
+    }
+
     public int gethID() {
         return hID;
     }
