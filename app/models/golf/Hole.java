@@ -15,30 +15,31 @@ import java.util.List;
 public class Hole extends Model {
 
     @Id
-    public int id;
+    private int hID;
 
     @Constraints.Required
-    public int holeNumber;
+    private int hNumber;
 
     @Constraints.Required
-    public int par;
+    private int hPar;
 
     @Constraints.Required
-    public int diffindex;
+    private int diffIndex;
 
     @Constraints.Required
-    public int score;
+    private int score;
 
     public Hole() {
     }
 
-    public Hole(int id, int holeNumber, int par, int diffindex, int score) {
-        this.id = id;
-        this.holeNumber = holeNumber;
-        this.par = par;
-        this.diffindex = diffindex;
+    public Hole(int hID, int hNumber, int hPar, int diffIndex, int score) {
+        this.hID = hID;
+        this.hNumber = hNumber;
+        this.hPar = hPar;
+        this.diffIndex = diffIndex;
         this.score = score;
     }
+
 
     //Generic query helper for entity Computer with id Long
     public static Finder<Long, Hole> find = new Finder<Long, Hole>(Long.class, Hole.class);
@@ -48,5 +49,47 @@ public class Hole extends Model {
         return Hole.find.all();
     }
 
+
+    //Getters & Setters
+    public int gethID() {
+        return hID;
+    }
+
+    public void sethID(int hID) {
+        this.hID = hID;
+    }
+
+    public int gethNumber() {
+        return hNumber;
+    }
+
+    public void sethNumber(int hNumber) {
+        this.hNumber = hNumber;
+    }
+
+    public int gethPar() {
+        return hPar;
+    }
+
+    public void sethPar(int hPar) {
+        this.hPar = hPar;
+    }
+
+    public int getDiffIndex() {
+        return diffIndex;
+    }
+
+    public void setDiffIndex(int diffIndex) {
+        this.diffIndex = diffIndex;
+    }
+
+    public int getScore() {
+        return score;
+    }
+
+    public void setScore(int score) {
+        this.score = score;
+    }
+    //!Getters & Setters
 
 }

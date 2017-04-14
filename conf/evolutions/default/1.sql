@@ -4,12 +4,12 @@
 # --- !Ups
 
 create table hole (
-  id                            integer not null,
-  hole_number                   integer,
-  par                           integer,
-  diffindex                     integer,
+  h_id                          integer not null,
+  h_number                      integer,
+  h_par                         integer,
+  diff_index                    integer,
   score                         integer,
-  constraint pk_hole primary key (id)
+  constraint pk_hole primary key (h_id)
 );
 create sequence hole_seq;
 

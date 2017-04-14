@@ -17,11 +17,11 @@
                 @for(p <- holes) {
                     <tr>
                             <!-- Display each product field value in a column -->
-                        <td>@p.id</td>
-                        <td>@p.holeNumber</td>
-                        <td>@p.par</td>
-                        <td>@p.diffindex</td>
-                        <td>@p.score</td>
+                        <td>@p.gethID()</td>
+                        <td>@p.gethNumber()</td>
+                        <td>@p.gethPar()</td>
+                        <td>@p.getDiffIndex</td>
+                        <td>@p.getScore</td>
                     </tr>
                 }<!-- End of For loop -->
             </tbody>
