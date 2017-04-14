@@ -3,6 +3,14 @@
 
 # --- !Ups
 
+create table course (
+  c_id                          bigint not null,
+  c_name                        varchar(255),
+  c_par                         integer,
+  constraint pk_course primary key (c_id)
+);
+create sequence course_seq;
+
 create table hole (
   h_id                          integer not null,
   h_number                      integer,
@@ -27,6 +35,9 @@ create table user (
 
 
 # --- !Downs
+
+drop table if exists course;
+drop sequence if exists course_seq;
 
 drop table if exists hole;
 drop sequence if exists hole_seq;
