@@ -51,7 +51,7 @@ public class Hole extends Model {
     //Generic query helper for entity Computer with id Long
     public static Finder<Long, Hole> find = new Finder<Long, Hole>(Long.class, Hole.class);
 
-    //Find all Products in the database
+    //Find all Holes in the database
     public static List<Hole> findAll() {
         return Hole.find.all();
     }

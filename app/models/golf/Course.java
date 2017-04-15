@@ -35,7 +35,13 @@ public class Course extends Model {
     }
 
 
+    //Generic query helper with id Long
+    public static Finder<Long, Course> find = new Finder<Long, Course>(Long.class, Course.class);
 
+    //Find all Courses in the database
+    public static java.util.List<Course> findAll() {
+        return Course.find.all();
+    }
 
 
     //Getters & Setters

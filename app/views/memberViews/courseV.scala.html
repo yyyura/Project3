@@ -1,0 +1,31 @@
+@(user: models.users.User, courses_l: List[models.golf.Course])
+
+@main("List Of Courses", user) {
+    <table class="table table-bordered table-hover table-condensed">
+        <thead>
+                <!-- The header row-->
+            <tr>
+                <th>ID</th>
+                <th>Course Name</th>
+                <th>Course Par</th>
+            </tr>
+        </thead>
+        <tbody>
+                <!-- Start of For loop - For each course in course list add a row -->
+            @for(course <- courses_l) {
+                <tr>
+                        <!-- Display each course field value in a column -->
+                    <td>@course.getcID()</td>
+                    <td>@course.getcName()</td>
+                    <td>@course.getcPar()</td>
+                </tr>
+            }<!-- End of For loop -->
+        </tbody>
+    </table>
+}
+
+
+
+
+
+

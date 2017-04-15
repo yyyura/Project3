@@ -20,15 +20,18 @@ POST        /registerFormSubmit        controllers.security.RegisterCtrl.registe
 
 # Member
 GET         /holes                     controllers.MemberCtrl.holesC()
+GET         /courses                   controllers.MemberCtrl.coursesC()
 
 
+
+# Admin
 
 
 # Login
 #GET        /login               controllers.HomeController.loginC
 
 
-# Admin
+
 
 
 
