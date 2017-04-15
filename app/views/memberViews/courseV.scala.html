@@ -18,6 +18,11 @@
                     <td>@course.getcID()</td>
                     <td>@course.getcName()</td>
                     <td>@course.getcPar()</td>
+
+                    <td>
+                        <a href="@routes.MemberCtrl.oneCourseHolesC(course.getcID())" ><input class="btn-xs btn-success" type="submit" value="Select Club"></a>
+                    </td>
+
                 </tr>
             }<!-- End of For loop -->
         </tbody>

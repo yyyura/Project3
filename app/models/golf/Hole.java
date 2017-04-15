@@ -64,6 +64,10 @@ public class Hole extends Model {
         return course_o.getcID();
     }
 
+    public String getCourseName() {
+        return course_o.getcName();
+    }
+
     public int gethID() {
         return hID;
     }

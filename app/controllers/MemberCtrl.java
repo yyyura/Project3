@@ -5,9 +5,11 @@ import controllers.security.CheckIfMember;
 import models.golf.Course;
 import models.golf.Hole;
 import models.users.User;
+import play.data.Form;
 import play.mvc.*;
 import views.html.memberViews.courseV;
 import views.html.memberViews.holesV;
+import views.html.memberViews.oneCourseHolesV;
 
 // Import required classes
 import java.util.List;
@@ -28,6 +30,18 @@ public class MemberCtrl extends Controller {
      * this method will be called when the application receives a
      * <code>GET</code> request with a path of <code>/</code>.
      */
+
+    //Insures user is member before allowing access
+//    @Security.Authenticated(Secured.class)
+    public Result oneCourseHolesC(Long courseID)//Renders a form based on the team selected by the member
+    {
+        List<Hole> holes_l = Hole.findAll();
+                return ok(oneCourseHolesV.render(User.getLoggedIn(session().get("loginname")), holes_l, courseID));
+    }
+
+
+
+
     @Security.Authenticated(Secured.class)
     @With(CheckIfMember.class)
     public Result holesC() {

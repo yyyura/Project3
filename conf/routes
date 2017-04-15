@@ -21,6 +21,7 @@ POST        /registerFormSubmit        controllers.security.RegisterCtrl.registe
 # Member
 GET         /holes                     controllers.MemberCtrl.holesC()
 GET         /courses                   controllers.MemberCtrl.coursesC()
+GET         /oneCourse/:id             controllers.MemberCtrl.oneCourseHolesC(id: Long)
 
 
 

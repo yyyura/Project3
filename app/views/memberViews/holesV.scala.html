@@ -1,11 +1,11 @@
 @(user: models.users.User, holes_l: List[models.golf.Hole])
 
-@main("List Of Holes", user) {
+@main("List Of All Holes", user) {
     <table class="table table-bordered table-hover table-condensed">
         <thead>
                 <!-- The header row-->
             <tr>
-                <th>ID</th>
+                <th>Club</th>
                 <th>Hole Number</th>
                 <th>Par</th>
                 <th>Diff Index</th>
@@ -15,16 +15,14 @@
         <tbody>
                 <!-- Start of For loop - For each hole in holes list add a row -->
             @for(hole <- holes_l) {
-                @if(hole.getCourseID == 2) {
-                    <tr>
-                            <!-- Display each hole field value in a column -->
-                        <td>@hole.gethID()</td>
-                        <td>@hole.gethNumber()</td>
-                        <td>@hole.gethPar()</td>
-                        <td>@hole.getDiffIndex</td>
-                        <td>@hole.getScore</td>
-                    </tr>
-                }
+                <tr>
+                        <!-- Display each hole field value in a column -->
+                    <td>@hole.getCourseName</td>
+                    <td>@hole.gethNumber()</td>
+                    <td>@hole.gethPar()</td>
+                    <td>@hole.getDiffIndex</td>
+                    <td>@hole.getScore</td>
+                </tr>
             }<!-- End of For loop -->
         </tbody>
     </table>

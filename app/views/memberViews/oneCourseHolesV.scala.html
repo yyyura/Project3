@@ -1,0 +1,40 @@
+
+@(user: models.users.User, holes_l: List[models.golf.Hole], courseID: Long)
+
+@main("List Of Holes", user) {
+
+    <h3>Welcome to </h3>
+    <table class="table table-bordered table-hover table-condensed">
+        <thead>
+                <!-- The header row-->
+            <tr>
+                <th>ID</th>
+                <th>Hole Number</th>
+                <th>Par</th>
+                <th>Diff Index</th>
+                <th>Score</th>
+            </tr>
+        </thead>
+        <tbody>
+                <!-- Start of For loop - For each hole in holes list add a row -->
+            @for(hole <- holes_l) {
+                @if(hole.getCourseID == courseID) {
+            <tr>
+                    <!-- Display each hole field value in a column -->
+                <td>@hole.gethID()</td>
+                <td>@hole.gethNumber()</td>
+                <td>@hole.gethPar()</td>
+                <td>@hole.getDiffIndex</td>
+                <td>@hole.getScore</td>
+            </tr>
+        }
+        }<!-- End of For loop -->
+        </tbody>
+    </table>
+}
+
+
+
+
+
+

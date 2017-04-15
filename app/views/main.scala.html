@@ -3,6 +3,7 @@
 <!DOCTYPE html>
     <html id="@pageID">
         <head>
+            <link rel="shortcut icon" href="@routes.Assets.at("images/golf.png")">
             <title>Golf Handicap - @pageID</title>
             <meta charset="utf-8">
             <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -75,7 +76,7 @@
                             <ul class="nav" id="side-menu">
                                 <li>
                                     <a href="@routes.HomeController.index()"><i class="fa fa-spinner fa-spin"></i>
-                                         Home</a>
+                                        Home</a>
                                 </li>
 
                                 @if(user != null) {
@@ -85,16 +86,17 @@
                                             List of Courses</a>
                                     </li>
 
+
                                     <li>
                                         <a href="@routes.MemberCtrl.holesC()"><i class="fa fa-table fa-fw"></i>
-                                            List of Holes</a>
+                                            List of All Holes</a>
                                     </li>
 
 
                                     @if(user.getUserType().equalsIgnoreCase("member")) {
                                         <li>
                                             <a href="@routes.MemberCtrl.holesC()"><i class="fa fa-table fa-fw"></i>
-                                                Only Member can see</a>
+                                                Only Member can see </a>
                                         </li>
 
                                     }
