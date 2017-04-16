@@ -3,25 +3,29 @@
 # ~~~~
 
 # An example controller showing a sample home page
-GET         /                          controllers.HomeController.index
+GET         /                            controllers.HomeController.index
 
 
 
 #Login
-GET         /login                     controllers.security.LoginCtrl.login()
-POST        /login                     controllers.security.LoginCtrl.authenticate()
-GET         /logout                    controllers.security.LoginCtrl.logout()
+GET         /login                       controllers.security.LoginCtrl.login()
+POST        /login                       controllers.security.LoginCtrl.authenticate()
+GET         /logout                      controllers.security.LoginCtrl.logout()
 
 #Register
-GET         /register                  controllers.security.RegisterCtrl.register()
-POST        /registerFormSubmit        controllers.security.RegisterCtrl.registerFormSubmit()
+GET         /register                    controllers.security.RegisterCtrl.register()
+POST        /registerFormSubmit          controllers.security.RegisterCtrl.registerFormSubmit()
 
 
 
 # Member
-GET         /holes                     controllers.MemberCtrl.holesC()
-GET         /courses                   controllers.MemberCtrl.coursesC()
-GET         /oneCourse/:id             controllers.MemberCtrl.oneCourseHolesC(id: Long)
+GET         /holes                       controllers.MemberCtrl.holesC()
+
+GET         /editAllHoles/:holeID        controllers.MemberCtrl.editAllHolesC(holeID: Long)
+POST        /submitEditHole              controllers.MemberCtrl.submitEditHolesC(holeID: Long)
+
+GET         /courses                     controllers.MemberCtrl.coursesC()
+GET         /oneCourse/:id               controllers.MemberCtrl.oneCourseHolesC(id: Long)
 
 
 
@@ -39,14 +43,14 @@ GET         /oneCourse/:id             controllers.MemberCtrl.oneCourseHolesC(id
 
 
 # Map static resources from the /public folder to the /assets URL path
-GET         /assets/*file              controllers.Assets.at(path="/public", file)
+GET         /assets/*file                controllers.Assets.at(path="/public", file)
 
 
 
 
 # An example controller showing how to use dependency injection
-GET         /count                     controllers.CountController.count
+GET         /count                       controllers.CountController.count
 # An example controller showing how to write asynchronous code
-GET         /message                   controllers.AsyncController.message
+GET         /message                     controllers.AsyncController.message
 
 

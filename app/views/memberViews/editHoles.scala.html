@@ -1,0 +1,15 @@
+@(user: models.users.User, editHoleForm: Form[models.golf.Hole], hole: models.golf.Hole)
+
+@import helper._
+
+@main("Score", user) {
+    <h3> Edit a Score for Hole No: @hole.gethNumber()</h3>
+
+
+    @form(action = routes.MemberCtrl.submitEditHolesC(hole.gethID()), 'class -> "form-horizontal", 'role -> "form") {
+        @inputText(editHoleForm("score"), '_label -> "Score")
+        <div class="actions">
+            <input type="submit" value="Edit Hole" class="btn primary">
+        </div>
+    }
+}
