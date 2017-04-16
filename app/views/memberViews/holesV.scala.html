@@ -5,11 +5,13 @@
         <thead>
                 <!-- The header row-->
             <tr>
+                <th>Hole ID</th>
                 <th>Club</th>
                 <th>Hole Number</th>
                 <th>Par</th>
                 <th>Diff Index</th>
                 <th>Score</th>
+                <th></th>
             </tr>
         </thead>
         <tbody>
@@ -17,6 +19,7 @@
             @for(hole <- holes_l) {
                 <tr>
                         <!-- Display each hole field value in a column -->
+                    <td>@hole.gethID()</td>
                     <td>@hole.getCourseName</td>
                     <td>@hole.gethNumber()</td>
                     <td>@hole.gethPar()</td>

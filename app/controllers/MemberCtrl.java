@@ -42,7 +42,7 @@ public class MemberCtrl extends Controller {
                 return ok(editHoles.render(User.getLoggedIn(session().get("loginname")), editHoleForm, holes_l.get(i)));
             }
         }
-        return redirect("/holes");
+        return redirect("/courses");
     }
 
     public Result submitEditHolesC(Long holeID) { //Processes the edit player form and saves the changes to the database
@@ -53,15 +53,15 @@ public class MemberCtrl extends Controller {
         if (editHoleForm.hasErrors()) {
             return redirect("/editAllHoles/" + holeID);
         }
-
+        Long courseID = 0L;
         for (int i = 0; i < holes_l.size(); i++) {
             if (holes_l.get(i).gethID() == holeID) {
                 holes_l.get(i).setScore(hole.getScore());
+                courseID = holes_l.get(i).getCourseID();
                 holes_l.get(i).update();
                 }
             }
-
-        return redirect("/holes");
+        return redirect("/oneCourse/" + courseID);
     }//!submitEditPlayer
 
 
