@@ -25,6 +25,7 @@ public class Course extends Model {
     @Constraints.Required
     private int cPar;
 
+    //ONE Course to MANY Holes
     @OneToMany
     public List<Hole> holes_l;
 
@@ -71,3 +72,12 @@ public class Course extends Model {
     //!Getters & Setters
 
 }
+
+
+
+
+//    public void setPar() {
+//        for (int i = 0; i < 18; i++) {
+//            totalPar += holes[i].getPar();
+//        }
+//    }

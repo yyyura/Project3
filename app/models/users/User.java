@@ -23,7 +23,7 @@ import java.util.List;
 public class User extends Model {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)//increment of the specified column(field)
     public Long id;
 
     @Constraints.Required
@@ -38,14 +38,21 @@ public class User extends Model {
     @Constraints.Required
     public String password;
 
+//    @Constraints.Required
+//    public double handicap;
+//
+//    @Constraints.Required
+//    public int numofrounds;
+
 
     // Default constructor
     public User() {
     }
 
     // Constructor to initialise object
-    public User(Long id, String loginname, String username, String email, String password) {
-        this.id = id;
+
+
+    public User(String loginname, String username, String email, String password) {
         this.loginname = loginname;
         this.username = username;
         this.email = email;
@@ -77,8 +84,37 @@ public class User extends Model {
             return find.where().eq("loginname", loginname).findUnique();
     }
 
-    public Long getid() {
-        return this.id;
+    //getter - setter
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getLoginname() {
+        return loginname;
+    }
+
+    public void setLoginname(String loginname) {
+        this.loginname = loginname;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getPassword() {
@@ -88,6 +124,9 @@ public class User extends Model {
     public void setPassword(String password) {
         this.password = password;
     }
+
+
+    //!getter - setter
 
 
 //    // Check if a user is logged in (by id - email address)
@@ -106,23 +145,6 @@ public class User extends Model {
     public String getUserType() {
         DiscriminatorValue val = this.getClass().getAnnotation(DiscriminatorValue.class);
         return val == null ? null : val.value();
-    }
-
-    public String getName() {
-        return username;
-    }
-
-    public void setName(String name) {
-        this.username = name;
-    }
-
-    public String getLoginName() {
-        return loginname;
-    }
-
-    public void setLoginName(String loginName) {
-        this.loginname = loginName;
-
     }
 
 

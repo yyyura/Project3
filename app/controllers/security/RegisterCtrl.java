@@ -39,7 +39,7 @@ public class RegisterCtrl extends Controller {
 
 
         else if (loginnameUsed(newRegisterForm.get().loginname) == true) {
-            flash("error", "Login name is already used please try again!");
+            flash("error", "Login name already exists please try another name.");
             return badRequest(register.render(User.getLoggedIn(session().get("userID")), newRegisterForm));
         }
 

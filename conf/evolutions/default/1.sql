@@ -11,6 +11,17 @@ create table course (
 );
 create sequence course_seq;
 
+create table handicap (
+  hand_id                       integer not null,
+  hand_value                    double,
+  category                      varchar(255),
+  rounds_qty                    integer,
+  date                          timestamp,
+  member_o_id                   bigint,
+  constraint pk_handicap primary key (hand_id)
+);
+create sequence handicap_seq;
+
 create table hole (
   h_id                          integer not null,
   h_number                      integer,
@@ -29,10 +40,11 @@ create table user (
   username                      varchar(255),
   email                         varchar(255),
   password                      varchar(255),
-  handicap                      double,
-  numofrounds                   integer,
   constraint pk_user primary key (id)
 );
+
+alter table handicap add constraint fk_handicap_member_o_id foreign key (member_o_id) references user (id) on delete restrict on update restrict;
+create index ix_handicap_member_o_id on handicap (member_o_id);
 
 alter table hole add constraint fk_hole_course_o_c_id foreign key (course_o_c_id) references course (c_id) on delete restrict on update restrict;
 create index ix_hole_course_o_c_id on hole (course_o_c_id);
@@ -40,11 +52,17 @@ create index ix_hole_course_o_c_id on hole (course_o_c_id);
 
 # --- !Downs
 
+alter table handicap drop constraint if exists fk_handicap_member_o_id;
+drop index if exists ix_handicap_member_o_id;
+
 alter table hole drop constraint if exists fk_hole_course_o_c_id;
 drop index if exists ix_hole_course_o_c_id;
 
 drop table if exists course;
 drop sequence if exists course_seq;
+
+drop table if exists handicap;
+drop sequence if exists handicap_seq;
 
 drop table if exists hole;
 drop sequence if exists hole_seq;

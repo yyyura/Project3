@@ -25,11 +25,12 @@ public class Hole extends Model {
     private int hPar;
 
     @Constraints.Required
-    private int diffIndex;
+    private int diffIndex;//the difficulty of the hole, rated from 1-18 (1 being the easiest hole on the course)
 
     @Constraints.Required
-    private int score;
+    private int score;//the amount of shots the user took on this hole
 
+    //MANY Holes to ONE Course
     @ManyToOne
     public Course course_o;
 

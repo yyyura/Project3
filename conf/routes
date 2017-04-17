@@ -18,7 +18,7 @@ POST        /registerFormSubmit          controllers.security.RegisterCtrl.regis
 
 
 
-# Member
+# Member Controllers
 GET         /holes                       controllers.MemberCtrl.holesC()
 
 GET         /editAllHoles/:holeID        controllers.MemberCtrl.editAllHolesC(holeID: Long)
@@ -27,6 +27,8 @@ POST        /submitEditHole              controllers.MemberCtrl.submitEditHolesC
 GET         /courses                     controllers.MemberCtrl.coursesC()
 GET         /oneCourse/:id               controllers.MemberCtrl.oneCourseHolesC(id: Long)
 
+#GET         /setHandicap                 controllers.MemberCtrl.setHandicapC()
+#POST        /handicapSubmit              controllers.MemberCtrl.handicapFormSubmitC()
 
 
 # Admin

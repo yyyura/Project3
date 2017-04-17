@@ -10,7 +10,7 @@ import javax.persistence.Entity;
 // Administrator inherits from the User class
 public class Admin extends User {
 
-    public Admin(Long id, String loginname, String name, String email, String password) {
-        super(id, loginname, name, email, password);
+    public Admin(String loginname, String username, String email, String password) {
+        super(loginname, username, email, password);
     }
-} 
+}

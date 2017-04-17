@@ -14,6 +14,10 @@
                             <div class="col-lg-6">
                             @form(action = controllers.security.routes.RegisterCtrl.registerFormSubmit()) {
 
+                                @if(flash.containsKey("error")) {
+                                    <h5 class="alert alert-danger">@flash.get("error")</h5>
+                                }
+
                                 @inputText(registerForm("loginname"),
                                     '_label -> "Login Name",
                                     '_showConstraints -> false,
@@ -26,10 +30,6 @@
                                     '_error -> "Invalid",
                                     'class -> "form-control")
 
-                                @if(flash.containsKey("error")) {
-                                    <h5 class="alert alert-danger">@flash.get("error")</h5>
-                                }
-
                                 @inputText(registerForm("email"),
                                     '_label -> "E-mail",
                                     '_showConstraints -> false,
@@ -37,6 +37,11 @@
 
                                 @inputPassword(registerForm("password"),
                                     '_label -> "Password",
+                                    '_showConstraints -> false,
+                                    'class -> "form-control")
+
+                                @inputText(registerForm("handicap"),
+                                    '_label -> "Initial Handicap",
                                     '_showConstraints -> false,
                                     'class -> "form-control")
 

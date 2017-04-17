@@ -3,14 +3,14 @@ package controllers;
 import controllers.security.Secured;
 import controllers.security.CheckIfMember;
 import models.golf.Course;
+import models.golf.Handicap;
 import models.golf.Hole;
+import models.users.Member;
 import models.users.User;
 import play.data.Form;
 import play.mvc.*;
-import views.html.memberViews.courseV;
-import views.html.memberViews.editHoles;
-import views.html.memberViews.holesV;
-import views.html.memberViews.oneCourseHolesV;
+import views.html.memberViews.*;
+import views.html.register;
 
 // Import required classes
 import java.util.List;
@@ -31,6 +31,39 @@ public class MemberCtrl extends Controller {
      * <code>GET</code> request with a path of <code>/</code>.
      */
 
+//    //set Handicap
+//    public Result setHandicapC() {
+//
+//        // Instantiate a Form object based on the User class
+//        //User currUser = User.getLoggedIn(session().get("userID"));
+//        Form<Handicap> inHandicapForm = Form.form(Handicap.class);//.fill(currUser);
+//
+//        // Render the setHandicapV View, passing the Form object
+//        return ok(setHandicapV.render(User.getLoggedIn(session().get("userID")), inHandicapForm));
+//
+//        //return redirect("/setHandicap");
+//    }
+//
+//    // Handle the form data when a new user is submitted
+//    public Result handicapFormSubmitC() {
+//
+//        User currUser = User.getLoggedIn(session().get("userID"));
+//        Form<Handicap> handicapForm = Form.form(Handicap.class).bindFromRequest();
+//        Handicap editHandicap = handicapForm.get();
+//
+//
+//
+////        currUser.setHandicap(editHandicap.);
+////        currUser.update();
+//
+//        return redirect("/");
+//    }//!registerFormSubmit
+//
+//
+//    //!set Handicap
+
+
+    //edit holes
     public Result editAllHolesC(Long holeID) {
 
         //Creates the list of holes using Hole.findAll()
@@ -59,10 +92,11 @@ public class MemberCtrl extends Controller {
                 holes_l.get(i).setScore(hole.getScore());
                 courseID = holes_l.get(i).getCourseID();
                 holes_l.get(i).update();
-                }
             }
+        }
         return redirect("/oneCourse/" + courseID);
     }//!submitEditPlayer
+    //!edit holes
 
 
     //Insures user is member before allowing access
@@ -100,3 +134,5 @@ public class MemberCtrl extends Controller {
 
 
 }
+
+

@@ -2,26 +2,29 @@
 
 # --- !Ups
 
-insert into user (usertype,id,loginname,username,email,password,handicap,numofrounds) values ( 'admin',0,'admin','Alice Admin','admin@products.com','pass',0,0 );
-insert into user (usertype,id,loginname,username,email,password,handicap,numofrounds) values ( 'member',1,'yura','yura member','yura@products.com','yura',6.3,15 );
+INSERT INTO USER (usertype, id, loginname, username, email, PASSWORD ) VALUES ( 'admin', 0, 'admin', 'Alice Admin', 'admin@golf.com', 'pass' );
+INSERT INTO user (usertype, id, loginname, username, email, password)
+VALUES ('member', 1, 'yura', 'Yura Member', 'yura@golf.com', 'yura');
 
 
+INSERT INTO course (c_id, c_name, c_par) VALUES (1, 'Portmarnock Golf Club', 72);
+INSERT INTO course (c_id, c_name, c_par) VALUES (2, 'Royal County Down', 72);
+INSERT INTO course (c_id, c_name, c_par) VALUES (3, 'Royal Portrush Golf Club', 72);
 
-insert into course (c_id,c_name,c_par) VALUES (1,'Portmarnock Golf Club',72 );
-insert into course (c_id,c_name,c_par) VALUES (2,'Royal County Down',72 );
+INSERT INTO hole (h_id, h_number, h_par, diff_index, score, course_o_c_id) VALUES (1, 1, 4, 1, 7, 1);
+INSERT INTO hole (h_id, h_number, h_par, diff_index, score, course_o_c_id) VALUES (2, 2, 4, 2, 7, 1);
+INSERT INTO hole (h_id, h_number, h_par, diff_index, score, course_o_c_id) VALUES (3, 3, 5, 3, 7, 1);
+INSERT INTO hole (h_id, h_number, h_par, diff_index, score, course_o_c_id) VALUES (4, 4, 4, 4, 7, 1);
 
-insert into hole (h_id,h_number,h_par,diff_index,score,course_o_c_id) values ( 1,1,4,1,7,1 );
-insert into hole (h_id,h_number,h_par,diff_index,score,course_o_c_id) values ( 2,2,4,2,8,1 );
-insert into hole (h_id,h_number,h_par,diff_index,score,course_o_c_id) values ( 3,3,4,3,7,1 );
-insert into hole (h_id,h_number,h_par,diff_index,score,course_o_c_id) values ( 4,4,4,4,7,1 );
+INSERT INTO hole (h_id, h_number, h_par, diff_index, score, course_o_c_id) VALUES (5, 1, 5, 4, 7, 2);
+INSERT INTO hole (h_id, h_number, h_par, diff_index, score, course_o_c_id) VALUES (6, 2, 4, 2, 7, 2);
+INSERT INTO hole (h_id, h_number, h_par, diff_index, score, course_o_c_id) VALUES (7, 3, 4, 3, 7, 2);
+INSERT INTO hole (h_id, h_number, h_par, diff_index, score, course_o_c_id) VALUES (8, 4, 4, 1, 7, 2);
 
-insert into hole (h_id,h_number,h_par,diff_index,score,course_o_c_id) values ( 5,1,4,4,6,2 );
-insert into hole (h_id,h_number,h_par,diff_index,score,course_o_c_id) values ( 6,2,4,2,5,2 );
-insert into hole (h_id,h_number,h_par,diff_index,score,course_o_c_id) values ( 7,3,4,3,7,2 );
-insert into hole (h_id,h_number,h_par,diff_index,score,course_o_c_id) values ( 8,4,4,1,8,2 );
-
-
-
+INSERT INTO hole (h_id, h_number, h_par, diff_index, score, course_o_c_id) VALUES (9, 1, 4, 4, 7, 3);
+INSERT INTO hole (h_id, h_number, h_par, diff_index, score, course_o_c_id) VALUES (10, 2, 3, 1, 7, 3);
+INSERT INTO hole (h_id, h_number, h_par, diff_index, score, course_o_c_id) VALUES (11, 3, 4, 3, 7, 3);
+INSERT INTO hole (h_id, h_number, h_par, diff_index, score, course_o_c_id) VALUES (12, 4, 4, 2, 7, 3);
 
 -- clean
 -- h2-browser
