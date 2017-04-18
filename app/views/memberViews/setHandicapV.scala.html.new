@@ -5,19 +5,14 @@
     @main("Handicap", user) {
         <h3> Edit Initial Handicap</h3>
 
-        @form(action = controllers.routes.MemberCtrl.handicapFormSubmitC()) {
+        @form(action = routes.MemberCtrl.handicapFormSubmitC()) {
 
             @inputText(inHandicapForm("handicap"),
                 '_label -> "Initial Handicap"
-
-                )
+            )
 
             <div class="actions">
                 <input type="submit" value="Submit" class="btn btn-primary">
             </div>
-
-
         }
-
-
     }

@@ -10,6 +10,7 @@ import models.users.User;
 import play.data.Form;
 import play.mvc.*;
 import views.html.memberViews.*;
+//import views.html.memberViews.setHandicapV;
 import views.html.register;
 
 // Import required classes
@@ -31,6 +32,18 @@ public class MemberCtrl extends Controller {
      * <code>GET</code> request with a path of <code>/</code>.
      */
 
+
+    public Result listHandicapC() {
+
+
+        //Get the list of courses using Course.find.all();
+        List<Handicap> handicap_l = Handicap.findAll();
+
+
+        return ok(handicapV.render(User.getLoggedIn(session().get("loginname")), handicap_l));
+    }
+
+
 //    //set Handicap
 //    public Result setHandicapC() {
 //
@@ -47,14 +60,19 @@ public class MemberCtrl extends Controller {
 //    // Handle the form data when a new user is submitted
 //    public Result handicapFormSubmitC() {
 //
-//        User currUser = User.getLoggedIn(session().get("userID"));
-//        Form<Handicap> handicapForm = Form.form(Handicap.class).bindFromRequest();
-//        Handicap editHandicap = handicapForm.get();
+//        Form<Handicap> editHandicapForm = Form.form(Handicap.class).bindFromRequest();
+//        //Creates a list of Handicap
 //
+//        Handicap current;
+//        current();
+//        Handicap handicapF = editHandicapForm.get();
+//        if (editHandicapForm.hasErrors()) {
+//            return redirect("/setHandicap");
+//        }
 //
+//        current.setHandValue(handicapF.getHandValue());
+//        current.update();
 //
-////        currUser.setHandicap(editHandicap.);
-////        currUser.update();
 //
 //        return redirect("/");
 //    }//!registerFormSubmit
@@ -99,16 +117,6 @@ public class MemberCtrl extends Controller {
     //!edit holes
 
 
-    //Insures user is member before allowing access
-//    @Security.Authenticated(Secured.class)
-    public Result oneCourseHolesC(Long courseID)//Renders a form based on the team selected by the member
-    {
-        List<Hole> holes_l = Hole.findAll();
-//        Form<Hole> editHoleForm = Form.form(Hole.class).fill(holes_l.get(3));
-        return ok(oneCourseHolesV.render(User.getLoggedIn(session().get("loginname")), holes_l, courseID));
-    }
-
-
     @Security.Authenticated(Secured.class)
     @With(CheckIfMember.class)
     public Result holesC() {
@@ -123,13 +131,18 @@ public class MemberCtrl extends Controller {
 
 
     public Result coursesC() {
-
-
         //Get the list of courses using Course.find.all();
         List<Course> course_l = Course.findAll();
-
-
         return ok(courseV.render(User.getLoggedIn(session().get("loginname")), course_l));
+    }
+
+    //Insures user is member before allowing access
+//    @Security.Authenticated(Secured.class)
+    public Result oneCourseHolesC(Long courseID)//Renders a form based on the team selected by the member
+    {
+        List<Hole> holes_l = Hole.findAll();
+//        Form<Hole> editHoleForm = Form.form(Hole.class).fill(holes_l.get(3));
+        return ok(oneCourseHolesV.render(User.getLoggedIn(session().get("loginname")), holes_l, courseID));
     }
 
 

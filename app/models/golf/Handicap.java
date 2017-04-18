@@ -55,6 +55,13 @@ public class Handicap extends Model {
         return Handicap.find.all();
     }
 
+    public Member getMember_o() {
+        return member_o;
+    }
+
+    public void setMember_o(Member member_o) {
+        this.member_o = member_o;
+    }
 
     //Getters & Setters
 

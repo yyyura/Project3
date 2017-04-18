@@ -1,0 +1,45 @@
+@(user: models.users.User, handicap_l: List[models.golf.Handicap])
+
+@main("List Of Handicaps", user) {
+    <table class="table table-bordered table-hover table-condensed">
+        <thead>
+                <!-- The header row-->
+            <tr>
+                <th>ID</th>
+                <th>Value</th>
+                <th>Category</th>
+                <th>Rounds</th>
+                <th>Date</th>
+                <th>Member</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+                <!-- Start of For loop - For each course in course list add a row -->
+            @for(handicap <- handicap_l) {
+                @if(handicap.getMember_o.getId == user.getId) {
+                    <tr>
+                            <!-- Display each course field value in a column -->
+                        <td>@handicap.getHandID()</td>
+                        <td>@handicap.getHandValue()</td>
+                        <td>@handicap.getCategory()</td>
+                        <td>@handicap.getRoundsQty()</td>
+                        <td>@handicap.getDate()</td>
+                        <td>@handicap.getMember_o.getUsername()</td>
+
+                        <td>
+                            @*<a href="@routes.MemberCtrl.oneCourseHolesC(handicap.getcID())" ><input class="btn-xs btn-success" type="submit" value="Select Club"></a>*@
+                        </td>
+
+                    </tr>
+                }
+            }<!-- End of For loop -->
+        </tbody>
+    </table>
+}
+
+
+
+
+
+

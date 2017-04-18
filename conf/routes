@@ -27,6 +27,8 @@ POST        /submitEditHole              controllers.MemberCtrl.submitEditHolesC
 GET         /courses                     controllers.MemberCtrl.coursesC()
 GET         /oneCourse/:id               controllers.MemberCtrl.oneCourseHolesC(id: Long)
 
+GET         /listHandicap                controllers.MemberCtrl.listHandicapC()
+
 #GET         /setHandicap                 controllers.MemberCtrl.setHandicapC()
 #POST        /handicapSubmit              controllers.MemberCtrl.handicapFormSubmitC()
 
