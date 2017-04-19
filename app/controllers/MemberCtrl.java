@@ -15,6 +15,8 @@ import views.html.memberViews.*;
 import views.html.register;
 
 // Import required classes
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 // Import required classes
@@ -34,16 +36,35 @@ public class MemberCtrl extends Controller {
      */
 
 
+    public Result submitRoundC(Long courseID) {
 
 
-    public Result submitRoundC() {
-
-
-        //Get the list of courses using Course.find.all();
+        Date date = new Date();
+        List<Hole> holeList = Hole.findAll();
+        List<Course> courseList = Course.findAll();
         List<Round> roundList = Round.findAll();
+        Course course = Course.find.byId(courseID);
+        int grossScore = 0;
+
+        for (Hole i : holeList) {
+            if (i.getCourseID() == courseID) {
+                grossScore += i.getScore();
+            }
+        }
+
+
+//        User member_o = newRegisterForm.get();
+
+        Round round = new Round(course, User.getLoggedIn(session().get("loginname")), grossScore, (grossScore - 72), (grossScore - 72), date);
+
+        //    Round round = new Round(Round.find.nextId(), course, User.getLoggedIn(session().get("id")), grossScore, grossScore, 5, date);
+
+//        Member m1 = new Member(member_o);
+        round.save();
+
+
         return ok(roundV.render(User.getLoggedIn(session().get("loginname")), roundList));
     }
-
 
 
     public Result listRoundsC() {
@@ -53,8 +74,6 @@ public class MemberCtrl extends Controller {
         List<Round> roundList = Round.findAll();
         return ok(roundV.render(User.getLoggedIn(session().get("loginname")), roundList));
     }
-
-
 
 
     public Result listHandicapC() {

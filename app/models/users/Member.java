@@ -29,20 +29,20 @@ public class Member extends User {
     }
 
     //ONE Member to MANY Handicaps
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL)
     public List<Handicap> handicap_l;
 
     //ONE Member to MANY Rounds
-    @OneToMany
-    public List<Round> roundsM_l;
+//    @OneToMany(mappedBy = "user_r_id",cascade = CascadeType.ALL)
+//    public List<Round> roundsM_l;
 
 
     //Generic query helper for entity User with unique id String
-    public static Model.Finder<String, Member> find = new Model.Finder<String, Member>(Member.class);
+    public static Model.Finder<String, User> find = new Model.Finder<String, User>(User.class);
 
 
     // Check if a user is logged in (by id - loginname)
-    public static Member getLoggedIn(String id) {
+    public static User getLoggedIn(String id) {
         if (id == null)
             return null;
         else

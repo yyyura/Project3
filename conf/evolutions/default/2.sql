@@ -39,10 +39,10 @@ INSERT INTO hole (h_id, h_number, h_par, diff_index, score, course_o_c_id) VALUE
 INSERT INTO hole (h_id, h_number, h_par, diff_index, score, course_o_c_id) VALUES (12, 4, 4, 2, 7, 3);
 
 ---Rounds
-INSERT INTO round(r_id, course_r_c_id,member_r_id, gross_score, net_score, handicap) VALUES (1,1,1,100,28,28.1);
-INSERT INTO round(r_id, course_r_c_id,member_r_id, gross_score, net_score, handicap) VALUES (2,1,1,105,33,33.1);
-INSERT INTO round(r_id, course_r_c_id,member_r_id, gross_score, net_score, handicap) VALUES (3,2,2,110,38,38.1);
-INSERT INTO round(r_id, course_r_c_id,member_r_id, gross_score, net_score, handicap) VALUES (4,3,2,90,18,18.1);
+INSERT INTO round(r_id, course_r_c_id,user_r_id, gross_score, net_score, handicap) VALUES (1,1,1,100,28,28.1);
+INSERT INTO round(r_id, course_r_c_id,user_r_id, gross_score, net_score, handicap) VALUES (2,1,1,105,33,33.1);
+INSERT INTO round(r_id, course_r_c_id,user_r_id, gross_score, net_score, handicap) VALUES (3,2,2,110,38,38.1);
+INSERT INTO round(r_id, course_r_c_id,user_r_id, gross_score, net_score, handicap) VALUES (4,3,2,90,18,18.1);
 
 
 

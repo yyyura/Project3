@@ -75,6 +75,11 @@ public class User extends Model {
         return find.where().eq("loginname", loginname).eq("password", password).findUnique();
     }
 
+
+
+
+
+
     // Check if a user is logged in (by id - loginname)
     public static User getLoggedIn(String loginname) {
         if (loginname == null)

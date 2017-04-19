@@ -29,7 +29,7 @@ GET         /oneCourse/:id               controllers.MemberCtrl.oneCourseHolesC(
 
 GET         /listRounds                  controllers.MemberCtrl.listRoundsC()
 
-GET         /submitRound                 controllers.MemberCtrl.submitRoundC()
+GET         /submitRound                 controllers.MemberCtrl.submitRoundC(courseID: Long)
 
 
 GET         /listHandicap                controllers.MemberCtrl.listHandicapC()

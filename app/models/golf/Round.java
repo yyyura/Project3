@@ -2,10 +2,9 @@ package models.golf;
 
 import com.avaje.ebean.Model;
 import models.users.Member;
+import models.users.User;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
 
@@ -35,6 +34,7 @@ import java.util.List;
 public class Round extends Model {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)//increment of the specified column(field)
     private Long rID;
 
     //MANY Rounds to ONE Course
@@ -43,7 +43,7 @@ public class Round extends Model {
 
     //MANY Rounds to ONE User
     @ManyToOne
-    private Member member_r;
+    private User user_r;
 
     //total strokes for playing all Holes on one course
     private int grossScore;
@@ -64,38 +64,15 @@ public class Round extends Model {
         return Round.find.all();
     }
 
-    public Round(Long rID, Course course_r, Member member_r, int grossScore, int netScore, double handicap, Date roundDate) {
-        this.rID = rID;
+    public Round(Course course_r, User user_r, int grossScore, int netScore, double handicap, Date roundDate) {
         this.course_r = course_r;
-        this.member_r = member_r;
+        this.user_r = user_r;
         this.grossScore = grossScore;
         this.netScore = netScore;
         this.handicap = handicap;
         this.roundDate = roundDate;
     }
 
-    public void setGrossScore() {
-        int totalScore = 0;
-
-        for (Hole i : course_r.holes_l) {
-
-            //if (course_r.getcID())
-            totalScore += i.getScore();
-        }
-        this.grossScore = totalScore;
-    }
-
-    public int calcGrossScore() {
-
-        int totalScore = 0;
-
-        for (Hole i : course_r.holes_l) {
-
-            //if (course_r.getcID())
-            totalScore += i.getScore();
-        }
-        return totalScore;
-    }
 
 
 
@@ -117,14 +94,13 @@ public class Round extends Model {
         this.course_r = course_r;
     }
 
-    public Member getMember_r() {
-        return member_r;
+    public User getUser_r() {
+        return user_r;
     }
 
-    public void setMember_r(Member member_r) {
-        this.member_r = member_r;
+    public void setUser_r(User user_r) {
+        this.user_r = user_r;
     }
-
 
     public int getGrossScore() {
         return grossScore;
