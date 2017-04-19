@@ -11,9 +11,9 @@ INSERT INTO user (usertype, id, loginname, username, email, password)
 VALUES ('member', 2, 'yura2', 'Yura2 Member', 'yura@golf.com', 'yura');
 
 ---Handicap
-INSERT INTO handicap(hand_id, hand_value, category, rounds_qty, date, member_o_id) VALUES (1,4.5,'0.1 -> 5.4',3,GETDATE(),1);
-INSERT INTO handicap(hand_id, hand_value, category, rounds_qty, date, member_o_id) VALUES (2,7.8,'5.5 -> 12.4',3,GETDATE(),1);
-INSERT INTO handicap(hand_id, hand_value, category, rounds_qty, date, member_o_id) VALUES (3,16.2,'12.5 -> 20.4',3,GETDATE(),2);
+INSERT INTO handicap(hand_id, hand_value, category, total_rounds_qty, date, member_o_id) VALUES (1,4.5,'0.1 -> 5.4',3,GETDATE(),1);
+INSERT INTO handicap(hand_id, hand_value, category, total_rounds_qty, date, member_o_id) VALUES (2,7.8,'5.5 -> 12.4',3,GETDATE(),1);
+INSERT INTO handicap(hand_id, hand_value, category, total_rounds_qty, date, member_o_id) VALUES (3,16.2,'12.5 -> 20.4',3,GETDATE(),2);
 
 
 ---2
@@ -39,13 +39,12 @@ INSERT INTO hole (h_id, h_number, h_par, diff_index, score, course_o_c_id) VALUE
 INSERT INTO hole (h_id, h_number, h_par, diff_index, score, course_o_c_id) VALUES (12, 4, 4, 2, 7, 3);
 
 ---Rounds
-INSERT INTO round(r_id, course_r_c_id, gross_score, net_score) VALUES (1,1,100,28);
-INSERT INTO round(r_id, course_r_c_id, gross_score, net_score) VALUES (2,1,105,33);
-INSERT INTO round(r_id, course_r_c_id, gross_score, net_score) VALUES (3,2,110,38);
-INSERT INTO round(r_id, course_r_c_id, gross_score, net_score) VALUES (4,3,90,18);
+INSERT INTO round(r_id, course_r_c_id,member_r_id, gross_score, net_score) VALUES (1,1,1,100,28);
+INSERT INTO round(r_id, course_r_c_id,member_r_id, gross_score, net_score) VALUES (2,1,1,105,33);
+INSERT INTO round(r_id, course_r_c_id,member_r_id, gross_score, net_score) VALUES (3,2,2,110,38);
+INSERT INTO round(r_id, course_r_c_id,member_r_id, gross_score, net_score) VALUES (4,3,2,90,18);
 
 
----3
 
 
 

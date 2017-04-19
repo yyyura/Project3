@@ -15,7 +15,7 @@ create table handicap (
   hand_id                       integer not null,
   hand_value                    double,
   category                      varchar(255),
-  rounds_qty                    integer,
+  total_rounds_qty              integer,
   date                          timestamp,
   member_o_id                   bigint,
   constraint pk_handicap primary key (hand_id)
@@ -36,6 +36,7 @@ create sequence hole_seq;
 create table round (
   r_id                          bigint not null,
   course_r_c_id                 bigint,
+  member_r_id                   bigint,
   gross_score                   double,
   net_score                     double,
   constraint pk_round primary key (r_id)
@@ -61,6 +62,9 @@ create index ix_hole_course_o_c_id on hole (course_o_c_id);
 alter table round add constraint fk_round_course_r_c_id foreign key (course_r_c_id) references course (c_id) on delete restrict on update restrict;
 create index ix_round_course_r_c_id on round (course_r_c_id);
 
+alter table round add constraint fk_round_member_r_id foreign key (member_r_id) references user (id) on delete restrict on update restrict;
+create index ix_round_member_r_id on round (member_r_id);
+
 
 # --- !Downs
 
@@ -72,6 +76,9 @@ drop index if exists ix_hole_course_o_c_id;
 
 alter table round drop constraint if exists fk_round_course_r_c_id;
 drop index if exists ix_round_course_r_c_id;
+
+alter table round drop constraint if exists fk_round_member_r_id;
+drop index if exists ix_round_member_r_id;
 
 drop table if exists course;
 drop sequence if exists course_seq;

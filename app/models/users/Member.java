@@ -2,10 +2,12 @@ package models.users;
 
 import com.avaje.ebean.Model;
 import models.golf.Handicap;
-import scala.collection.immutable.List;
+import models.golf.Round;
+
 
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 // Map inherited classes to a single table
@@ -29,6 +31,10 @@ public class Member extends User {
     //ONE Member to MANY Handicaps
     @OneToMany
     public List<Handicap> handicap_l;
+
+    //ONE Member to MANY Rounds
+    @OneToMany
+    public List<Round> roundsM_l;
 
 
     //Generic query helper for entity User with unique id String

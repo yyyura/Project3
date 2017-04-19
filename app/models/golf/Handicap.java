@@ -23,14 +23,14 @@ public class Handicap extends Model {
     @Constraints.Required
     private double handValue;
 
-    @Constraints.Required
+//    @Constraints.Required
     private String category;
 
-    @Constraints.Required
-    private int roundsQty;
+//    @Constraints.Required
+    private int totalRoundsQty;
 
-    @Constraints.Required
-    private Date date;//the amount of shots the user took on this hole
+//    @Constraints.Required
+    private Date date;
 
     //MANY Handicaps to ONE Member
     @ManyToOne
@@ -39,11 +39,11 @@ public class Handicap extends Model {
     public Handicap() {
     }
 
-    public Handicap(int handID, double handValue, String category, int roundsQty, Date date) {
+    public Handicap(int handID, double handValue, String category, int totalRoundsQty, Date date) {
         this.handID = handID;
         this.handValue = handValue;
         this.category = category;
-        this.roundsQty = roundsQty;
+        this.totalRoundsQty = totalRoundsQty;
         this.date = date;
     }
 
@@ -100,12 +100,12 @@ public class Handicap extends Model {
         this.category = category;
     }
 
-    public int getRoundsQty() {
-        return roundsQty;
+    public int getTotalRoundsQty() {
+        return totalRoundsQty;
     }
 
-    public void setRoundsQty(int roundsQty) {
-        this.roundsQty = roundsQty;
+    public void setTotalRoundsQty(int totalRoundsQty) {
+        this.totalRoundsQty = totalRoundsQty;
     }
 
     public Date getDate() {
