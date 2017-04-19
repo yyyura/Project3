@@ -2,12 +2,12 @@ package models.golf;
 
 import com.avaje.ebean.Model;
 import models.users.Member;
-import play.data.validation.Constraints;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import java.util.Date;
+import java.util.List;
 
 
 /**
@@ -46,12 +46,120 @@ public class Round extends Model {
     private Member member_r;
 
     //total strokes for playing all Holes on one course
-    private double grossScore;
+    private int grossScore;
 
     //subtracting the player's handicap from the grossScore
-    private double netScore;
+    private int netScore;
 
-    //private Date roundDate;
+    private double handicap;
+
+    private Date roundDate;
+
+
+    //Generic query helper for entity Computer with id Long
+    public static Finder<Long, Round> find = new Finder<Long, Round>(Long.class, Round.class);
+
+    //Find all Holes in the database
+    public static List<Round> findAll() {
+        return Round.find.all();
+    }
+
+    public Round(Long rID, Course course_r, Member member_r, int grossScore, int netScore, double handicap, Date roundDate) {
+        this.rID = rID;
+        this.course_r = course_r;
+        this.member_r = member_r;
+        this.grossScore = grossScore;
+        this.netScore = netScore;
+        this.handicap = handicap;
+        this.roundDate = roundDate;
+    }
+
+    public void setGrossScore() {
+        int totalScore = 0;
+
+        for (Hole i : course_r.holes_l) {
+
+            //if (course_r.getcID())
+            totalScore += i.getScore();
+        }
+        this.grossScore = totalScore;
+    }
+
+    public int calcGrossScore() {
+
+        int totalScore = 0;
+
+        for (Hole i : course_r.holes_l) {
+
+            //if (course_r.getcID())
+            totalScore += i.getScore();
+        }
+        return totalScore;
+    }
+
+
+
+    //setter, getter
+
+    public Long getrID() {
+        return rID;
+    }
+
+    public void setrID(Long rID) {
+        this.rID = rID;
+    }
+
+    public Course getCourse_r() {
+        return course_r;
+    }
+
+    public void setCourse_r(Course course_r) {
+        this.course_r = course_r;
+    }
+
+    public Member getMember_r() {
+        return member_r;
+    }
+
+    public void setMember_r(Member member_r) {
+        this.member_r = member_r;
+    }
+
+
+    public int getGrossScore() {
+        return grossScore;
+    }
+
+    public void setGrossScore(int grossScore) {
+        this.grossScore = grossScore;
+    }
+
+    public int getNetScore() {
+        return netScore;
+    }
+
+    public void setNetScore(int netScore) {
+        this.netScore = netScore;
+    }
+
+    public double getHandicap() {
+        return handicap;
+    }
+
+    public void setHandicap(double handicap) {
+        this.handicap = handicap;
+    }
+
+    public Date getRoundDate() {
+        return roundDate;
+    }
+
+    public void setRoundDate(Date roundDate) {
+        this.roundDate = roundDate;
+    }
+
+
+    //!setter, getter
 
 
 }

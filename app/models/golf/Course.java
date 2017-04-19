@@ -52,13 +52,13 @@ public class Course extends Model {
     }
 
 
-    public double calcGrossScore() {
-        int totalScore = 0;
-        for (Hole i : holes_l) {
-            totalScore += i.getScore();
-        }
-        return totalScore;
-    }
+//    public double getGrossScore() {
+//        int totalScore = 0;
+//        for (Hole i : holes_l) {
+//            totalScore += i.getScore();
+//        }
+//        return totalScore;
+//    }
 
 
 

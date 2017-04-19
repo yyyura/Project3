@@ -37,8 +37,10 @@ create table round (
   r_id                          bigint not null,
   course_r_c_id                 bigint,
   member_r_id                   bigint,
-  gross_score                   double,
-  net_score                     double,
+  gross_score                   integer,
+  net_score                     integer,
+  handicap                      double,
+  round_date                    timestamp,
   constraint pk_round primary key (r_id)
 );
 create sequence round_seq;

@@ -5,6 +5,7 @@ import controllers.security.CheckIfMember;
 import models.golf.Course;
 import models.golf.Handicap;
 import models.golf.Hole;
+import models.golf.Round;
 import models.users.Member;
 import models.users.User;
 import play.data.Form;
@@ -31,6 +32,29 @@ public class MemberCtrl extends Controller {
      * this method will be called when the application receives a
      * <code>GET</code> request with a path of <code>/</code>.
      */
+
+
+
+
+    public Result submitRoundC() {
+
+
+        //Get the list of courses using Course.find.all();
+        List<Round> roundList = Round.findAll();
+        return ok(roundV.render(User.getLoggedIn(session().get("loginname")), roundList));
+    }
+
+
+
+    public Result listRoundsC() {
+
+
+        //Get the list of courses using Course.find.all();
+        List<Round> roundList = Round.findAll();
+        return ok(roundV.render(User.getLoggedIn(session().get("loginname")), roundList));
+    }
+
+
 
 
     public Result listHandicapC() {

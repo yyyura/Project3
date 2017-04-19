@@ -27,6 +27,11 @@ POST        /submitEditHole              controllers.MemberCtrl.submitEditHolesC
 GET         /courses                     controllers.MemberCtrl.coursesC()
 GET         /oneCourse/:id               controllers.MemberCtrl.oneCourseHolesC(id: Long)
 
+GET         /listRounds                  controllers.MemberCtrl.listRoundsC()
+
+GET         /submitRound                 controllers.MemberCtrl.submitRoundC()
+
+
 GET         /listHandicap                controllers.MemberCtrl.listHandicapC()
 
 #GET         /setHandicap                 controllers.MemberCtrl.setHandicapC()

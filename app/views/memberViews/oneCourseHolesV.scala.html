@@ -1,8 +1,6 @@
-
 @(user: models.users.User, holes_l: List[models.golf.Hole], courseID: Long)
 
 @main("List Of Holes", user) {
-
 
 
     <h3>Welcome to </h3>
@@ -22,25 +20,33 @@
                 <!-- Start of For loop - For each hole in holes list add a row -->
             @for(hole <- holes_l) {
                 @if(hole.getCourseID == courseID) {
-            <tr>
-                    <!-- Display each hole field value in a column -->
-                <td>@hole.getCourseName</td>
-                <td>@hole.gethNumber()</td>
-                <td>@hole.gethPar()</td>
-                <td>@hole.getDiffIndex</td>
-                <td>@hole.getScore</td>
-                <td>
-                    <a href="@routes.MemberCtrl.editAllHolesC(hole.gethID())" ><input class="btn-xs btn-primary" type="submit" value="Edit Score"></a>
-                </td>
-            </tr>
-        }
-        }<!-- End of For loop -->
+                    <tr>
+                            <!-- Display each hole field value in a column -->
+                        <td>@hole.getCourseName</td>
+                        <td>@hole.gethNumber()</td>
+                        <td>@hole.gethPar()</td>
+                        <td>@hole.getDiffIndex</td>
+                        <td>@hole.getScore</td>
+                        <td>
+                            <a href="@routes.MemberCtrl.editAllHolesC(hole.gethID())" ><input class="btn-xs btn-primary" type="submit" value="Edit Score"></a>
+                        </td>
+                    </tr>
+                }
+            }<!-- End of For loop -->
         </tbody>
     </table>
+
     <div class="row">
         <div class="col-md-12">
-            @*<p class="text-right"><strong>*@
-                @*Gross Score: &euro; @("%.2f".format(holes_l. customer.basket.getBasketTotal()))</strong></p>*@
+            <p class="text-right"><strong>
+                Score Total: </strong></p>
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div class="col-md-12">
+            <a href="@routes.MemberCtrl.submitRoundC()" ><input class="btn-sm btn-danger" type="submit" value="Submit Round"></a>
         </div>
     </div>
 }
