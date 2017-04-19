@@ -6,11 +6,13 @@ package models.golf;
 
 import com.avaje.ebean.Model;
 import play.data.validation.Constraints;
-import scala.collection.immutable.List;
+//import scala.collection.immutable.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import java.util.List;
 
 
 @Entity
@@ -26,8 +28,13 @@ public class Course extends Model {
     private int cPar;
 
     //ONE Course to MANY Holes
-    @OneToMany
+    @OneToMany//(mappedBy = "course", cascade = CascadeType.PERSIST)
     public List<Hole> holes_l;
+
+
+    //ONE Course to MANY Rounds
+    @OneToMany//(mappedBy = "course", cascade = CascadeType.PERSIST)
+    public List<Round> rounds_l;
 
     public Course(Long cID, String cName, int cPar) {
         this.cID = cID;
@@ -45,7 +52,19 @@ public class Course extends Model {
     }
 
 
+    public double calcGrossScore() {
+        int totalScore = 0;
+        for (Hole i : holes_l) {
+            totalScore += i.getScore();
+        }
+        return totalScore;
+    }
+
+
+
     //Getters & Setters
+
+
     public Long getcID() {
         return cID;
     }

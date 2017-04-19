@@ -55,6 +55,19 @@ public class Handicap extends Model {
         return Handicap.find.all();
     }
 
+
+    public double calcHandicap() {
+        double handicap = 0;
+
+
+
+        return handicap;
+    }
+
+
+
+
+    //Getters & Setters
     public Member getMember_o() {
         return member_o;
     }
@@ -62,8 +75,6 @@ public class Handicap extends Model {
     public void setMember_o(Member member_o) {
         this.member_o = member_o;
     }
-
-    //Getters & Setters
 
     public int getHandID() {
         return handID;

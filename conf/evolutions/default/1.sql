@@ -33,6 +33,15 @@ create table hole (
 );
 create sequence hole_seq;
 
+create table round (
+  r_id                          bigint not null,
+  course_r_c_id                 bigint,
+  gross_score                   double,
+  net_score                     double,
+  constraint pk_round primary key (r_id)
+);
+create sequence round_seq;
+
 create table user (
   usertype                      varchar(31) not null,
   id                            bigint auto_increment not null,
@@ -49,6 +58,9 @@ create index ix_handicap_member_o_id on handicap (member_o_id);
 alter table hole add constraint fk_hole_course_o_c_id foreign key (course_o_c_id) references course (c_id) on delete restrict on update restrict;
 create index ix_hole_course_o_c_id on hole (course_o_c_id);
 
+alter table round add constraint fk_round_course_r_c_id foreign key (course_r_c_id) references course (c_id) on delete restrict on update restrict;
+create index ix_round_course_r_c_id on round (course_r_c_id);
+
 
 # --- !Downs
 
@@ -58,6 +70,9 @@ drop index if exists ix_handicap_member_o_id;
 alter table hole drop constraint if exists fk_hole_course_o_c_id;
 drop index if exists ix_hole_course_o_c_id;
 
+alter table round drop constraint if exists fk_round_course_r_c_id;
+drop index if exists ix_round_course_r_c_id;
+
 drop table if exists course;
 drop sequence if exists course_seq;
 
@@ -66,6 +81,9 @@ drop sequence if exists handicap_seq;
 
 drop table if exists hole;
 drop sequence if exists hole_seq;
+
+drop table if exists round;
+drop sequence if exists round_seq;
 
 drop table if exists user;
 
