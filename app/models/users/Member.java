@@ -28,11 +28,17 @@ public class Member extends User {
         super(m.loginname, m.username, m.email, m.password);
     }
 
-    //ONE Member to MANY Handicaps
+    // Member has one Handicap.
+    // Member is the owner (foreign key will be added to Handicap table)
+    // All changes to Member are cascaded.
+    // ONE Member to ONE Handicap
     @OneToMany(cascade = CascadeType.ALL)
     public List<Handicap> handicap_l;
 
-    //ONE Member to MANY Rounds
+    // Member can have many Rounds.
+    // Member is the owner (foreign key will be added to Round table)
+    // All changes to Member are cascaded
+    // ONE Member to MANY Rounds
 //    @OneToMany(mappedBy = "user_r_id",cascade = CascadeType.ALL)
 //    public List<Round> roundsM_l;
 

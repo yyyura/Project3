@@ -63,7 +63,8 @@ public class MemberCtrl extends Controller {
         round.save();
 
 
-        return ok(roundV.render(User.getLoggedIn(session().get("loginname")), roundList));
+        return redirect("/listRounds");
+//        return ok(roundV.render(User.getLoggedIn(session().get("loginname")), roundList));
     }
 
 

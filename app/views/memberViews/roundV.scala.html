@@ -17,7 +17,7 @@
         </thead>
         <tbody>
                 <!-- Start of For loop - For each course in course list add a row -->
-            @for(round <- roundList) {
+            @for(round <- roundList.reverseIterator) {
                 @*@@if(round.getMember_o.getId == user.getId) {*@
                     <tr>
                             <!-- Display each course field value in a column -->
