@@ -2,6 +2,7 @@ package models.users;
 
 import javax.persistence.*;
 
+import models.golf.Round;
 import play.data.validation.*;
 import com.avaje.ebean.*;
 
@@ -43,6 +44,14 @@ public class User extends Model {
 //
 //    @Constraints.Required
 //    public int numofrounds;
+
+
+    // Member can have many Rounds.
+    // Member is the owner (foreign key will be added to Round table)
+    // All changes to Member are cascaded
+    // ONE Member to MANY Rounds
+//    @OneToMany(mappedBy = "user_r_id",cascade = CascadeType.ALL)
+//    public List<Round> roundsM_l;
 
 
     // Default constructor
