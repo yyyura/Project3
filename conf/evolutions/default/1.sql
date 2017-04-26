@@ -13,7 +13,7 @@ create sequence course_seq;
 
 create table handicap (
   hand_id                       integer not null,
-  hand_value                    double,
+  handvalue                     double,
   category                      varchar(255),
   total_rounds_qty              integer,
   date                          timestamp,

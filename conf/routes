@@ -34,8 +34,8 @@ GET         /submitRound                 controllers.MemberCtrl.submitRoundC(cou
 
 GET         /listHandicap                controllers.MemberCtrl.listHandicapC()
 
-#GET         /setHandicap                 controllers.MemberCtrl.setHandicapC()
-#POST        /handicapSubmit              controllers.MemberCtrl.handicapFormSubmitC()
+GET         /setHandicap                 controllers.MemberCtrl.setHandicapC()
+POST        /handicapSubmit              controllers.MemberCtrl.handicapFormSubmitC()
 
 
 # Admin

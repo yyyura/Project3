@@ -6,16 +6,13 @@ import models.golf.Course;
 import models.golf.Handicap;
 import models.golf.Hole;
 import models.golf.Round;
-import models.users.Member;
 import models.users.User;
 import play.data.Form;
 import play.mvc.*;
 import views.html.memberViews.*;
 //import views.html.memberViews.setHandicapV;
-import views.html.register;
 
 // Import required classes
-import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -88,41 +85,68 @@ public class MemberCtrl extends Controller {
     }
 
 
-//    //set Handicap
-//    public Result setHandicapC() {
-//
-//        // Instantiate a Form object based on the User class
-//        //User currUser = User.getLoggedIn(session().get("userID"));
-//        Form<Handicap> inHandicapForm = Form.form(Handicap.class);//.fill(currUser);
-//
-//        // Render the setHandicapV View, passing the Form object
-//        return ok(setHandicapV.render(User.getLoggedIn(session().get("userID")), inHandicapForm));
-//
-//        //return redirect("/setHandicap");
-//    }
-//
-//    // Handle the form data when a new user is submitted
+    //set Handicap
+    public Result setHandicapC() {
+
+        // Instantiate a Form object based on the User class
+        User currUser = User.getLoggedIn(session().get("userID"));
+        Form<Handicap> inHandicapForm = Form.form(Handicap.class);//.fill(currUser);
+
+        // Render the setHandicapV View, passing the Form object
+        return ok(setHandicapV.render(currUser, inHandicapForm));
+
+        //return redirect("/setHandicap");
+    }
+
+    public Result handicapFormSubmitC() { //Processes the set initial handicap form and saves the changes to the database
+
+        User currUser = User.getLoggedIn(session().get("userID"));
+        Form<Handicap> editHandicapForm = Form.form(Handicap.class).bindFromRequest();
+        //Creates a list of Handicaps
+        List<Handicap> handicap_l = Handicap.findAll();
+        Handicap handicapF = editHandicapForm.get();
+        if (editHandicapForm.hasErrors()) {
+            return redirect("/setHandicap");
+        }
+
+        //User.getLoggedIn(session().get("loginname")).getId())
+        //use loginname to get User of this session
+
+        for (int i = 0; i < handicap_l.size(); i++) {
+            if (handicap_l.get(i).getUser_h().getId() == User.getLoggedIn(session().get("loginname")).getId()) {
+                handicap_l.get(i).setHandvalue(handicapF.getHandvalue());
+                handicap_l.get(i).update();
+            }
+        }
+        return redirect("/listHandicap");
+    }//!submitEditHolesC
+
+
+    // Handle the form data when a new user is submitted
 //    public Result handicapFormSubmitC() {
 //
 //        Form<Handicap> editHandicapForm = Form.form(Handicap.class).bindFromRequest();
 //        //Creates a list of Handicap
 //
-//        Handicap current;
-//        current();
+//
+////        Handicap current;
+////        current();
 //        Handicap handicapF = editHandicapForm.get();
 //        if (editHandicapForm.hasErrors()) {
 //            return redirect("/setHandicap");
 //        }
 //
-//        current.setHandValue(handicapF.getHandValue());
-//        current.update();
+////        Handicap current;
+////        current();
+////        current.setHandValue(handicapF.getHandValue());
+////        current.update();
 //
 //
 //        return redirect("/");
 //    }//!registerFormSubmit
-//
-//
-//    //!set Handicap
+
+
+    //!set Handicap
 
 
     //edit holes
@@ -140,7 +164,7 @@ public class MemberCtrl extends Controller {
         return redirect("/courses");
     }
 
-    public Result submitEditHolesC(Long holeID) { //Processes the edit player form and saves the changes to the database
+    public Result submitEditHolesC(Long holeID) { //Processes the edit hole form and saves the changes to the database
         Form<Hole> editHoleForm = Form.form(Hole.class).bindFromRequest();
         //Creates a list of Holes
         List<Hole> holes_l = Hole.findAll();
@@ -157,7 +181,8 @@ public class MemberCtrl extends Controller {
             }
         }
         return redirect("/oneCourse/" + courseID);
-    }//!submitEditPlayer
+    }//!submitEditHolesC
+
     //!edit holes
 
 

@@ -5,7 +5,6 @@
 package models.golf;
 
 import com.avaje.ebean.Model;
-import models.users.Member;
 import models.users.User;
 import play.data.validation.Constraints;
 
@@ -22,7 +21,7 @@ public class Handicap extends Model {
     private int handID;
 
     @Constraints.Required
-    private double handValue;
+    private double handvalue;
 
 //    @Constraints.Required
     private String category;
@@ -42,7 +41,7 @@ public class Handicap extends Model {
 
     public Handicap(int handID, double handValue, String category, int totalRoundsQty, Date date) {
         this.handID = handID;
-        this.handValue = handValue;
+        this.handvalue = handValue;
         this.category = category;
         this.totalRoundsQty = totalRoundsQty;
         this.date = date;
@@ -87,12 +86,12 @@ public class Handicap extends Model {
         this.handID = handID;
     }
 
-    public double getHandValue() {
-        return handValue;
+    public double getHandvalue() {
+        return handvalue;
     }
 
-    public void setHandValue(double handValue) {
-        this.handValue = handValue;
+    public void setHandvalue(double handvalue) {
+        this.handvalue = handvalue;
     }
 
     public String getCategory() {
