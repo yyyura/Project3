@@ -38,7 +38,6 @@ create table round (
   course_r_c_id                 bigint,
   user_r_id                     bigint,
   gross_score                   integer,
-  net_score                     integer,
   handicap                      double,
   round_date                    timestamp,
   constraint pk_round primary key (r_id)

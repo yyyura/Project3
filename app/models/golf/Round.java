@@ -49,7 +49,7 @@ public class Round extends Model {
     private int grossScore;
 
     //subtracting the player's handicap from the grossScore
-    private int netScore;
+//    private int netScore;
 
     private double handicap;
 
@@ -64,16 +64,56 @@ public class Round extends Model {
         return Round.find.all();
     }
 
-    public Round(Course course_r, User user_r, int grossScore, int netScore, double handicap, Date roundDate) {
+
+    public Round(Course course_r, User user_r, int grossScore, double lastHandicap) {
         this.course_r = course_r;
         this.user_r = user_r;
         this.grossScore = grossScore;
-        this.netScore = netScore;
-        this.handicap = handicap;
-        this.roundDate = roundDate;
+        this.handicap = calcHandicap(lastHandicap, grossScore, course_r.getcPar());
+        this.roundDate = new Date();
     }
 
+//    public Round(Course course_r, User user_r, int grossScore, double handicap, Date roundDate) {
+//        this.course_r = course_r;
+//        this.user_r = user_r;
+//        this.grossScore = grossScore;
+////        this.netScore = netScore;
+//        this.handicap = handicap;
+//        this.roundDate = roundDate;
+//    }
 
+
+    //////////////
+
+    //this method takes in the user's exact handicap, the gross score of their round, and the par of the course as parameters
+
+    public double calcHandicap(double exactHandicap, int grossScore, int par) {
+//        double newHand;
+        double roundedHC = Math.round(exactHandicap); //roundedHC is exactHandicap rounded to the nearest integer
+        double netScore = grossScore - roundedHC;     //netScore is the grossScore after the roundedHC is applied
+        double changeToHC;                            //this is what is what the handicap is modified by (it is calculated based on the user's score in the round)
+        if (netScore > par) {
+            exactHandicap += 0.1;
+        } else if (netScore < par) {
+            if (exactHandicap <= 28.0 && exactHandicap >= 18.0) {
+                //category 3 handicap
+                changeToHC = (par - netScore) * 0.3;
+                exactHandicap -= changeToHC;
+            } else if (exactHandicap < 18.0 && exactHandicap >= 10.0) {
+                //category 2 handicap
+                changeToHC = (par - netScore) * 0.2;
+                exactHandicap -= changeToHC;
+            } else if (exactHandicap < 10.0) {
+                //category 1 handicap
+                changeToHC = (par - netScore) * 0.1;
+                exactHandicap -= changeToHC;
+            }
+        }
+
+        return exactHandicap;                      //this is where the handicap is applied to the database (may need changing)
+    }
+
+    /////////////////
 
 
     //setter, getter
@@ -110,13 +150,13 @@ public class Round extends Model {
         this.grossScore = grossScore;
     }
 
-    public int getNetScore() {
-        return netScore;
-    }
-
-    public void setNetScore(int netScore) {
-        this.netScore = netScore;
-    }
+//    public int getNetScore() {
+//        return netScore;
+//    }
+//
+//    public void setNetScore(int netScore) {
+//        this.netScore = netScore;
+//    }
 
     public double getHandicap() {
         return handicap;

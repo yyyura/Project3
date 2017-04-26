@@ -36,28 +36,41 @@ public class MemberCtrl extends Controller {
     public Result submitRoundC(Long courseID) {
 
 
+        User currUser = User.getLoggedIn(session().get("loginname"));
         Date date = new Date();
         List<Hole> holeList = Hole.findAll();
+        List<Handicap> handicapList = Handicap.findAll();
         List<Course> courseList = Course.findAll();
         List<Round> roundList = Round.findAll();
-        Course course = Course.find.byId(courseID);
-        int grossScore = 0;
 
+        Course course = Course.find.byId(courseID);
+//        Handicap handicap = Handicap.find.ref(User.getLoggedIn(session().get("loginname")).getId());
+
+        int grossScore = 0;
         for (Hole i : holeList) {
             if (i.getCourseID() == courseID) {
                 grossScore += i.getScore();
             }
         }
 
+        double lastHandicap = 0.0;
+        for (Handicap i : handicapList) {
+            if (i.getUser_h().getId() == currUser.getId()) {
+                lastHandicap = i.getHandvalue();
+            }
+        }
+
+        Round round = new Round(course, currUser, grossScore, lastHandicap);
+
+//        Round round = new Round(course, currUser, grossScore, (grossScore - 72), date);
+        round.save();
+
 
 //        User member_o = newRegisterForm.get();
-
-        Round round = new Round(course, User.getLoggedIn(session().get("loginname")), grossScore, (grossScore - 72), (grossScore - 72), date);
-
-        //    Round round = new Round(Round.find.nextId(), course, User.getLoggedIn(session().get("id")), grossScore, grossScore, 5, date);
-
+//
+//        Round round = new Round(Round.find.nextId(), course, User.getLoggedIn(session().get("id")), grossScore, grossScore, 5, date);
+//
 //        Member m1 = new Member(member_o);
-        round.save();
 
 
         return redirect("/listRounds");
@@ -72,7 +85,6 @@ public class MemberCtrl extends Controller {
         List<Round> roundList = Round.findAll();
         return ok(roundV.render(User.getLoggedIn(session().get("loginname")), roundList));
     }
-
 
 
     //---------------------------
