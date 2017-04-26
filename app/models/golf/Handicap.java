@@ -6,11 +6,12 @@ package models.golf;
 
 import com.avaje.ebean.Model;
 import models.users.Member;
+import models.users.User;
 import play.data.validation.Constraints;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import java.util.Date;
 import java.util.List;
 
@@ -32,9 +33,9 @@ public class Handicap extends Model {
 //    @Constraints.Required
     private Date date;
 
-    //MANY Handicaps to ONE Member
-    @ManyToOne
-    public Member member_o;
+    //ONE Handicaps to ONE Member
+    @OneToOne
+    public User user_h;
 
     public Handicap() {
     }
@@ -50,7 +51,7 @@ public class Handicap extends Model {
     //Generic query helper for entity Computer with id Long
     public static Finder<Long, Handicap> find = new Finder<Long, Handicap>(Long.class, Handicap.class);
 
-    //Find all Holes in the database
+    //Find all Handicap in the database
     public static List<Handicap> findAll() {
         return Handicap.find.all();
     }
@@ -68,12 +69,14 @@ public class Handicap extends Model {
 
 
     //Getters & Setters
-    public Member getMember_o() {
-        return member_o;
+
+
+    public User getUser_h() {
+        return user_h;
     }
 
-    public void setMember_o(Member member_o) {
-        this.member_o = member_o;
+    public void setUser_h(User user_h) {
+        this.user_h = user_h;
     }
 
     public int getHandID() {

@@ -17,7 +17,7 @@
         <tbody>
                 <!-- Start of For loop - For each course in course list add a row -->
             @for(handicap <- handicap_l) {
-                @if(handicap.getMember_o.getId == user.getId) {
+                @*@@if(handicap.getMember_o.getId == user.getId) {*@
                     <tr>
                             <!-- Display each course field value in a column -->
                         <td>@handicap.getHandID()</td>
@@ -25,14 +25,14 @@
                         <td>@handicap.getCategory()</td>
                         <td>@handicap.getTotalRoundsQty()</td>
                         <td>@handicap.getDate()</td>
-                        <td>@handicap.getMember_o.getUsername()</td>
+                        <td>@handicap.getUser_h.getUsername()</td>
 
                         <td>
                             @*<a href="@routes.MemberCtrl.oneCourseHolesC(handicap.getcID())" ><input class="btn-xs btn-success" type="submit" value="Select Club"></a>*@
                         </td>
 
                     </tr>
-                }
+
             }<!-- End of For loop -->
         </tbody>
     </table>

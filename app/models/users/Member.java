@@ -32,8 +32,13 @@ public class Member extends User {
     // Member is the owner (foreign key will be added to Handicap table)
     // All changes to Member are cascaded.
     // ONE Member to ONE Handicap
-    @OneToMany(cascade = CascadeType.ALL)
-    public List<Handicap> handicap_l;
+//    @OneToOne(cascade = CascadeType.ALL)
+//    public Handicap handicap_m;
+
+
+
+//    @OneToMany(cascade = CascadeType.ALL)
+//    public List<Handicap> handicap_l;
 
     // Member can have many Rounds.
     // Member is the owner (foreign key will be added to Round table)
