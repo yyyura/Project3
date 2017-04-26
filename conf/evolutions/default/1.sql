@@ -12,7 +12,7 @@ create table course (
 create sequence course_seq;
 
 create table handicap (
-  hand_id                       integer not null,
+  hand_id                       integer auto_increment not null,
   handvalue                     double,
   category                      varchar(255),
   total_rounds_qty              integer,
@@ -21,7 +21,6 @@ create table handicap (
   constraint uq_handicap_user_h_id unique (user_h_id),
   constraint pk_handicap primary key (hand_id)
 );
-create sequence handicap_seq;
 
 create table hole (
   h_id                          integer not null,
@@ -84,7 +83,6 @@ drop table if exists course;
 drop sequence if exists course_seq;
 
 drop table if exists handicap;
-drop sequence if exists handicap_seq;
 
 drop table if exists hole;
 drop sequence if exists hole_seq;

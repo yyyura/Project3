@@ -100,6 +100,7 @@ public class MemberCtrl extends Controller {
 
     public Result handicapFormSubmitC() { //Processes the set initial handicap form and saves the changes to the database
 
+        boolean handExist = false;
         User currUser = User.getLoggedIn(session().get("userID"));
         Form<Handicap> editHandicapForm = Form.form(Handicap.class).bindFromRequest();
         //Creates a list of Handicaps
@@ -113,11 +114,22 @@ public class MemberCtrl extends Controller {
         //use loginname to get User of this session
 
         for (int i = 0; i < handicap_l.size(); i++) {
+
             if (handicap_l.get(i).getUser_h().getId() == User.getLoggedIn(session().get("loginname")).getId()) {
+                handExist = true;
                 handicap_l.get(i).setHandvalue(handicapF.getHandvalue());
                 handicap_l.get(i).update();
             }
         }
+
+        if (handExist == false) {
+//                Round round = new Round(course, User.getLoggedIn(session().get("loginname")), grossScore, (grossScore - 72), (grossScore - 72), date);
+//                Handicap(int handID, double handValue, String category, int totalRoundsQty, Date date)
+            Handicap handicap = new Handicap(handicapF.getHandvalue(), User.getLoggedIn(session().get("loginname")));
+            handicap.save();
+        }
+
+
         return redirect("/listHandicap");
     }//!submitEditHolesC
 

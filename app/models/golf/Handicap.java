@@ -8,9 +8,7 @@ import com.avaje.ebean.Model;
 import models.users.User;
 import play.data.validation.Constraints;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.OneToOne;
+import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
 
@@ -18,6 +16,7 @@ import java.util.List;
 public class Handicap extends Model {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)//increment of the specified column(field)
     private int handID;
 
     @Constraints.Required
@@ -38,6 +37,15 @@ public class Handicap extends Model {
 
     public Handicap() {
     }
+
+    public Handicap(double handvalue, User user_h) {
+        this.handvalue = handvalue;
+        this.user_h = user_h;
+    }
+
+//    public Handicap(double handvalue) {
+//        this.handvalue = handvalue;
+//    }
 
     public Handicap(int handID, double handValue, String category, int totalRoundsQty, Date date) {
         this.handID = handID;
