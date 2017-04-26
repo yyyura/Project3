@@ -32,7 +32,7 @@ public class MemberCtrl extends Controller {
      * <code>GET</code> request with a path of <code>/</code>.
      */
 
-
+//----------------------------------------------------
     public Result submitRoundC(Long courseID) {
 
 
@@ -74,6 +74,10 @@ public class MemberCtrl extends Controller {
     }
 
 
+
+    //---------------------------
+
+
     public Result listHandicapC() {
 
 
@@ -89,7 +93,7 @@ public class MemberCtrl extends Controller {
     public Result setHandicapC() {
 
         // Instantiate a Form object based on the User class
-        User currUser = User.getLoggedIn(session().get("userID"));
+        User currUser = User.getLoggedIn(session().get("loginname"));
         Form<Handicap> inHandicapForm = Form.form(Handicap.class);//.fill(currUser);
 
         // Render the setHandicapV View, passing the Form object
@@ -101,7 +105,7 @@ public class MemberCtrl extends Controller {
     public Result handicapFormSubmitC() { //Processes the set initial handicap form and saves the changes to the database
 
         boolean handExist = false;
-        User currUser = User.getLoggedIn(session().get("userID"));
+        User currUser = User.getLoggedIn(session().get("loginname"));
         Form<Handicap> editHandicapForm = Form.form(Handicap.class).bindFromRequest();
         //Creates a list of Handicaps
         List<Handicap> handicap_l = Handicap.findAll();
@@ -160,6 +164,7 @@ public class MemberCtrl extends Controller {
 
     //!set Handicap
 
+    //---------------------------------
 
     //edit holes
     public Result editAllHolesC(Long holeID) {
