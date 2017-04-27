@@ -60,16 +60,51 @@ public class MemberCtrl extends Controller {
             }
         }
 
+        //-- record new Round
         Round round = new Round(course, currUser, grossScore, lastHandicap);
-
-//        Round round = new Round(course, currUser, grossScore, (grossScore - 72), date);
         round.save();
 
 
+        //-- update Handicap table --
+        boolean handExist = false;
+        for (int i = 0; i < handicapList.size(); i++) {
+
+            if (handicapList.get(i).getUser_h().getId() == User.getLoggedIn(session().get("loginname")).getId()) {
+                handExist = true;
+                handicapList.get(i).setHandvalue(round.getHandicap());
+                handicapList.get(i).update();
+            }
+        }
+        if (handExist == false) {
+            return redirect("/setHandicap");
+//            Handicap handicap = new Handicap(round.getHandicap(), User.getLoggedIn(session().get("loginname")));
+//            handicap.save();
+        }
+//-- !update Handicap table --
+
+
+//        Handicap handicap = new Handicap(round.getHandicap());
+//        handicap_l.get(i).update();
+
+//        Handicap handicap = new Handicap(round.getHandicap(), User.getLoggedIn(session().get("loginname")));
+//        handicap.save();
+
+
+//        round.getrID();
+//        round.getHandicap();
+
+        //update Handicap table
+//        Round lastRound = Round.find.byId()
+//        double newRoundHandicap =0;
+//        for (Round i:roundList ) {
+//            if (i.getrID().)
+//
+//        }
+
+
+//        Round round = new Round(course, currUser, grossScore, (grossScore - 72), date);
 //        User member_o = newRegisterForm.get();
-//
 //        Round round = new Round(Round.find.nextId(), course, User.getLoggedIn(session().get("id")), grossScore, grossScore, 5, date);
-//
 //        Member m1 = new Member(member_o);
 
 
@@ -101,7 +136,7 @@ public class MemberCtrl extends Controller {
     }
 
 
-    //set Handicap
+    //------------ Set Handicap ------------
     public Result setHandicapC() {
 
         // Instantiate a Form object based on the User class

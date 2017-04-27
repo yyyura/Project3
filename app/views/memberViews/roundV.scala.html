@@ -10,9 +10,9 @@
                 <th>Member</th>
                 <th>Gross Score</th>
                 @*<th>Net Score</th>*@
-                <th>Current Handicap</th>
+                <th>Handicap Advance</th>
                 <th>Date</th>
-                <th></th>
+                @*<th></th>*@
             </tr>
         </thead>
         <tbody>
@@ -26,12 +26,12 @@
                         <td>@round.getUser_r.getUsername()</td>
                         <td>@round.getGrossScore()</td>
                         @*<td>@round.getNetScore()</td>*@
-                        <td>@round.getHandicap()</td>
+                        @*<td>@round.getHandicap()</td>*@
+                        <td>@("%.1f".format(round.getHandicap()))</td>
                         <td>@round.getRoundDate()</td>
-
-                        <td>
+                        @*<td>*@
                             @*<a href="@routes.MemberCtrl.oneCourseHolesC(handicap.getcID())" ><input class="btn-xs btn-success" type="submit" value="Select Club"></a>*@
-                        </td>
+                        @*</td>*@
 
                     </tr>
 

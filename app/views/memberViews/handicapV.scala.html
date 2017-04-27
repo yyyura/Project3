@@ -6,12 +6,12 @@
                 <!-- The header row-->
             <tr>
                 <th>ID</th>
-                <th>Value</th>
+                <th>Handicap</th>
                 <th>Category</th>
                 <th>Rounds</th>
                 <th>Date</th>
                 <th>Member</th>
-                <th></th>
+                @*<th></th>*@
             </tr>
         </thead>
         <tbody>
@@ -21,15 +21,18 @@
                     <tr>
                             <!-- Display each course field value in a column -->
                         <td>@handicap.getHandID()</td>
-                        <td>@handicap.getHandvalue()</td>
+
+                        @*<td>@handicap.getHandvalue()</td>*@
+                        <td>@("%.1f".format(handicap.getHandvalue()))</td>
+
                         <td>@handicap.getCategory()</td>
                         <td>@handicap.getTotalRoundsQty()</td>
                         <td>@handicap.getDate()</td>
                         <td>@handicap.getUser_h.getUsername()</td>
 
-                        <td>
+                        @*<td>*@
                             @*<a href="@routes.MemberCtrl.oneCourseHolesC(handicap.getcID())" ><input class="btn-xs btn-success" type="submit" value="Select Club"></a>*@
-                        </td>
+                        @*</td>*@
 
                     </tr>
 
