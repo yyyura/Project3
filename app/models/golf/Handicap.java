@@ -64,13 +64,13 @@ public class Handicap extends Model {
     }
 
 
-    public double calcHandicap() {
-        double handicap = 0;
-
-
-
-        return handicap;
-    }
+//    public double calcHandicap() {
+//        double handicap = 0;
+//
+//
+//
+//        return handicap;
+//    }
 
 
 
