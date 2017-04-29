@@ -4,11 +4,12 @@
 
 ---1
 --Users
-INSERT INTO USER (usertype, id, loginname, username, email, PASSWORD ) VALUES ( 'admin', 0, 'admin', 'Alice Admin', 'admin@golf.com', 'pass' );
+--http://www.xorbin.com/tools/sha256-hash-calculator
+INSERT INTO USER (usertype, id, loginname, username, email, PASSWORD ) VALUES ( 'admin', 0, 'admin', 'Admin', 'admin@golf.com', 'f42d22ffbc343a1368e12db6359b964f1c33e490c032df170a81817100ee7f74' );
 INSERT INTO user (usertype, id, loginname, username, email, password)
-VALUES ('member', 1, 'yura', 'Yura Member', 'yura@golf.com', 'yura');
+VALUES ('member', 1, 'yura', 'Yura Member', 'yura@golf.com', '20bcace6ce5f643174f4859053c94c66c010c681238649126424ecdca5612b94');
 INSERT INTO user (usertype, id, loginname, username, email, password)
-VALUES ('member', 2, 'yura2', 'Yura2 Member', 'yura2@golf.com', 'yura');
+VALUES ('member', 2, 'yura2', 'Yura2 Member', 'yura2@golf.com', '20bcace6ce5f643174f4859053c94c66c010c681238649126424ecdca5612b94');
 
 ---Handicap
 INSERT INTO handicap(hand_id, handvalue, category, total_rounds_qty, date, user_h_id) VALUES (1,4.5,'0.1 -> 5.4',3,GETDATE(),1);

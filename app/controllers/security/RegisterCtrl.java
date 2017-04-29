@@ -47,9 +47,9 @@ public class RegisterCtrl extends Controller {
         else {
             User member_o = newRegisterForm.get();
 
-//            CalcSHA cs = new CalcSHA();
-//            String md = cs.calcPassword(member_o.password);
-//            member_o.password = md;
+            CalcSHA cs = new CalcSHA();
+            String md = cs.calcPassword(member_o.password);
+            member_o.password = md;
 
             Member m1 = new Member(member_o);
             m1.save();

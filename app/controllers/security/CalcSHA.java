@@ -5,7 +5,7 @@ import java.security.MessageDigest;
 public class CalcSHA {
 
     public String calcPassword(String password) {
-        String salt = "blue fluffy cheese";
+        String salt = "Jurijs Cicelimovs";
         password = password + salt;
         String output = "";
         try {
