@@ -58,13 +58,15 @@
                                 <i class="fa fa-caret-down"></i>
                             </a>
                             <ul class="dropdown-menu dropdown-user">
-                                <li><a href="/help"><i class="fa fa-info-circle fa-fw"></i> Help</a>
-                                </li>
+                                @*<li><a href="/help"><i class="fa fa-info-circle fa-fw"></i> Help</a>*@
+                                @*</li>*@
                                 @if(user == null) {
                                     <li><a href="/login"><i class="fa fa-sign-in fa-fw"></i> Login</a>
                                     </li>
+                                    <li><a href="/register"><i class="fa fa-pencil fa-fw"></i> Register</a>
+                                    </li>
                                 } else {
-                                    <li class="divider"></li>
+                                    @*<li class="divider"></li>*@
                                     <li><a href="/logout"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
                                     </li>
                                 }
@@ -107,7 +109,7 @@
                                     @*</li>*@
                                     <li>
                                         <a href="@routes.MemberCtrl.setHandicapC()"><i class="fa fa-table fa-fw"></i>
-                                            Set Initial Handicap</a>
+                                            Reset Handicap</a>
                                     </li>
 
 

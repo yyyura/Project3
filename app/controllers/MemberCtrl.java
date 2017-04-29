@@ -61,8 +61,8 @@ public class MemberCtrl extends Controller {
         }
 
         //-- record new Round
-        Round round = new Round(course, currUser, grossScore, lastHandicap);
-        round.save();
+//        Round round = new Round(course, currUser, grossScore, lastHandicap);
+//        round.save();
 
 
         //-- update Handicap table --
@@ -71,6 +71,11 @@ public class MemberCtrl extends Controller {
 
             if (handicapList.get(i).getUser_h().getId() == User.getLoggedIn(session().get("loginname")).getId()) {
                 handExist = true;
+
+                //submit round only if handicap exist
+                Round round = new Round(course, currUser, grossScore, lastHandicap);
+                round.save();
+
                 handicapList.get(i).setHandvalue(round.getHandicap());
                 handicapList.get(i).update();
             }

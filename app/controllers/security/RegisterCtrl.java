@@ -1,5 +1,6 @@
 package controllers.security;
 
+import models.golf.Handicap;
 import models.users.Member;
 import models.users.User;
 import play.data.Form;
@@ -53,8 +54,14 @@ public class RegisterCtrl extends Controller {
             Member m1 = new Member(member_o);
             m1.save();
 
+
+
+//            Handicap handicap = new Handicap(6.3, newRegisterForm.get());
+//            handicap.save();
+
+
         }
-        return redirect("/");
+        return redirect("/login");
     }//!registerFormSubmit
 
 
