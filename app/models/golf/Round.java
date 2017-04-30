@@ -87,7 +87,7 @@ public class Round extends Model {
 
     //this method takes in the user's exact handicap, the gross score of their round, and the par of the course as parameters
 
-    public double calcHandicap(double exactHandicap, int grossScore, int par) {
+    public static double calcHandicap(double exactHandicap, int grossScore, int par) {
 //        double newHand;
         double roundedHC = Math.round(exactHandicap); //roundedHC is exactHandicap rounded to the nearest integer
         double netScore = grossScore - roundedHC;     //netScore is the grossScore after the roundedHC is applied
@@ -110,7 +110,7 @@ public class Round extends Model {
             }
         }
 
-        return exactHandicap;                      //this is where the handicap is applied to the database (may need changing)
+        return exactHandicap;
     }
 
     /////////////////

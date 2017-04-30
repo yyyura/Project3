@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import com.fasterxml.jackson.databind.JsonNode;
+import models.golf.Round;
 import org.junit.*;
 
 import play.mvc.*;
@@ -16,6 +17,7 @@ import play.libs.F;
 import play.libs.F.*;
 import play.twirl.api.Content;
 
+import static models.golf.Round.calcHandicap;
 import static play.test.Helpers.*;
 import static org.junit.Assert.*;
 
@@ -34,12 +36,21 @@ public class ApplicationTest {
         assertEquals(2, a);
     }
 
+//    @Test
+//    public void renderTemplate() {
+//        Content html = views.html.index.render("Your new application is ready.");
+//        assertEquals("text/html", html.contentType());
+//        assertTrue(html.body().contains("Your new application is ready."));
+//    }
+
     @Test
-    public void renderTemplate() {
-        Content html = views.html.index.render("Your new application is ready.");
-        assertEquals("text/html", html.contentType());
-        assertTrue(html.body().contains("Your new application is ready."));
+    public void testCalcHandicap(){
+        double outHand;
+        outHand = calcHandicap(6.3, 70, 72);
+        assertEquals(5.5, outHand, 0.01);
+
+//        assertEquals(5.5, outHand);
+//        double roundOff = Math.round(outHand * 10.0) / 10.0;
+
     }
-
-
 }
